@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Timelines · Beacon After Bell</title>
+  <meta name="description" content="Interactive Grade 9-12 timelines with major milestones and recommended steps toward university.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <svg class="logo-mark" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2L4 20h16L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <circle cx="12" cy="9" r="2.4" fill="currentColor"/>
+        </svg>
+        Beacon <span>After Bell</span>
+      </a>
+      <nav class="nav">
+        <a href="vault.html">Vault</a>
+        <a href="timelines.html" class="active">Timelines</a>
+        <a href="blog.html">Blog</a>
+        <a href="interviews.html">Interviews</a>
+        <a href="index.html#contact">Get Involved</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <a href="index.html" class="back-link">&larr; Back to home</a>
+        <p class="eyebrow">Grades 9&ndash;12</p>
+        <h1>Interactive Timelines</h1>
+        <p>Major milestones and recommended steps toward university &mdash; course selection, competitions, APs, IB, SAT, and applications &mdash; laid out grade by grade. Pick a year to see what to focus on.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="tabs" role="tablist">
+          <button class="tab-btn active" data-tab="g9" role="tab">Grade 9</button>
+          <button class="tab-btn" data-tab="g10" role="tab">Grade 10</button>
+          <button class="tab-btn" data-tab="g11" role="tab">Grade 11</button>
+          <button class="tab-btn" data-tab="g12" role="tab">Grade 12</button>
+        </div>
+
+        <div class="tab-panel active" id="g9">
+          <ul class="timeline">
+            <li><h3>Build strong habits</h3><p>Focus on consistent study routines and time management &mdash; the foundation everything else is built on.</p></li>
+            <li><h3>Explore broadly</h3><p>Try clubs, sports, and activities widely. This is the year to discover interests, not narrow them.</p></li>
+            <li><h3>Course selection</h3><p>Choose Grade 10 courses that keep options open, especially in math and science prerequisites.</p></li>
+            <li><h3>Start a "wins" journal</h3><p>Keep a running record of projects and achievements &mdash; future-you writing essays will thank you.</p></li>
+          </ul>
+        </div>
+
+        <div class="tab-panel" id="g10">
+          <ul class="timeline">
+            <li><h3>Deepen 1&ndash;2 interests</h3><p>Begin committing to a couple of activities where you can grow into leadership by Grade 11&ndash;12.</p></li>
+            <li><h3>First competitions</h3><p>Enter accessible contests (math, writing, science fairs) to test the waters and build confidence.</p></li>
+            <li><h3>Consider IB / AP paths</h3><p>Learn how IB and AP work at your school and whether they fit your goals before Grade 11 selections.</p></li>
+            <li><h3>Summer planning</h3><p>Look into volunteering, courses, or projects for the summer &mdash; unstructured months add up.</p></li>
+          </ul>
+        </div>
+
+        <div class="tab-panel" id="g11">
+          <ul class="timeline">
+            <li><h3>Grades matter most now</h3><p>Grade 11 marks weigh heavily in Canadian admissions &mdash; prioritize your core academic courses.</p></li>
+            <li><h3>Standardized tests</h3><p>If applying to the US/UK, plan SAT/ACT timing. Register early and build a study schedule.</p></li>
+            <li><h3>Step into leadership</h3><p>Take on a real role in your key activities &mdash; depth and initiative over a long list.</p></li>
+            <li><h3>Research programs</h3><p>Start a shortlist of universities and programs, noting their specific requirements and deadlines.</p></li>
+          </ul>
+        </div>
+
+        <div class="tab-panel" id="g12">
+          <ul class="timeline">
+            <li><h3>Finalize your list</h3><p>Lock in target, match, and safety schools and track every deadline in one place.</p></li>
+            <li><h3>Write your essays</h3><p>Draft early. Use the Vault for inspiration, then make it unmistakably yours.</p></li>
+            <li><h3>Requests &amp; references</h3><p>Ask teachers for references well ahead of time and gather any supplementary forms (AIF, portfolios).</p></li>
+            <li><h3>Scholarships &amp; submit</h3><p>Apply for scholarships alongside admissions &mdash; then submit early to avoid the last-minute crush.</p></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>&copy; 2026 Beacon After Bell &middot; Vancouver, BC</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
