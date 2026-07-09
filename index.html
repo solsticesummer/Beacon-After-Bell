@@ -5,16 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Beacon After Bell</title>
   <meta name="description" content="A student-founded non-profit bridging academic years, grades, and age groups through an accessible online database of resources for high school students.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
       <a href="#top" class="logo">
-        <svg class="logo-mark" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M12 2L4 20h16L12 2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
-          <circle cx="12" cy="9" r="2.4" fill="currentColor"/>
-        </svg>
+        <img src="assets/logo.svg" alt="Beacon After Bell">
         Beacon <span>After Bell</span>
       </a>
       <nav class="nav">
@@ -28,7 +28,7 @@
   </header>
 
   <main>
-    <section id="top" class="hero">
+    <section id="top" class="hero section-glow section-centered">
       <div class="container">
         <p class="eyebrow">Vancouver, BC · Student-Founded Non-Profit</p>
         <h1>Lighting the way between grades, years, and journeys.</h1>
@@ -44,7 +44,7 @@
       </div>
     </section>
 
-    <section id="what" class="section">
+    <section id="what" class="section section-centered">
       <div class="container">
         <h2>What we're building</h2>
         <p class="section-lede">
@@ -59,7 +59,7 @@
       </div>
     </section>
 
-    <section id="how" class="section section-alt">
+    <section id="how" class="section section-alt section-centered">
       <div class="container">
         <h2>How</h2>
         <p class="section-lede">
@@ -69,45 +69,81 @@
       </div>
     </section>
 
-    <section id="features" class="section">
+    <section id="living-archive" class="section section-glow section-centered">
       <div class="container">
-        <h2>Planned Features</h2>
-        <div class="feature-grid">
-          <a class="feature-card" href="vault.html">
-            <span class="feature-index">01</span>
-            <h3>Living Archive / Vault</h3>
-            <p>A searchable database of successful college application essays, categorized by university programs and designated schools.</p>
+        <h2>The Living Archive</h2>
+        <p class="section-lede">
+          Four ways students build on what came before them &mdash; a growing archive of essays,
+          milestones, reflections, and wins.
+        </p>
+
+        <div class="bento-grid">
+          <a class="glass-surface bento-card bento-a" href="vault.html">
+            <p class="card-eyebrow">Living Archive</p>
+            <h3>Essay Vault</h3>
+            <p>A searchable database of successful college application essays, tagged by university and program.</p>
+            <div class="tag-row">
+              <span class="essay-tag">UBC Sauder</span>
+              <span class="essay-tag">Engineering</span>
+              <span class="essay-tag">Life Sciences</span>
+              <span class="essay-tag">Computer Science</span>
+            </div>
+            <span class="card-link">Browse the vault</span>
           </a>
-          <a class="feature-card" href="timelines.html">
-            <span class="feature-index">02</span>
+
+          <a class="glass-surface bento-card bento-b" href="timelines.html">
+            <p class="card-eyebrow">Grades 9&ndash;12</p>
             <h3>Interactive Timelines</h3>
-            <p>For grades 9&ndash;12, covering major milestones and recommended steps in preparation for university &mdash; course selection, competitions, APs, IB, SAT, and more.</p>
+            <p>Milestones and recommended steps, laid out grade by grade toward university.</p>
+            <ul class="mini-steps">
+              <li class="active">9</li>
+              <li>10</li>
+              <li>11</li>
+              <li>12</li>
+            </ul>
+            <span class="card-link">See the full path</span>
           </a>
-          <a class="feature-card" href="blog.html">
-            <span class="feature-index">03</span>
-            <h3>FAQ / Blog</h3>
-            <p>A space where students, graduates, and alumni contribute, comment, and discuss answers to common doubts &mdash; "What I Wish I Knew" and "What I Would Have Done."</p>
+
+          <a class="glass-surface bento-card bento-c" href="blog.html">
+            <p class="card-eyebrow">FAQ &amp; Blog</p>
+            <h3>What I Wish I Knew</h3>
+            <p class="pull-quote">&ldquo;Start the essays in the summer &mdash; writing under deadline made every sentence worse.&rdquo;</p>
+            <span class="card-link">Read more</span>
           </a>
-          <a class="feature-card" href="interviews.html">
-            <span class="feature-index">04</span>
-            <h3>Monthly Interviews</h3>
-            <p>A digital series featuring interviews with successful students or graduates sharing and discussing their journey.</p>
-          </a>
-          <a class="feature-card" href="forums.html">
-            <span class="feature-index">05</span>
-            <h3>Common-Goal Forums</h3>
-            <p>Students tag their interests, goals, or field of study to discover peers with the same aspirations &mdash; facilitating study groups and shared advice.</p>
-          </a>
-          <a class="feature-card" href="community.html">
-            <span class="feature-index">06</span>
-            <h3>Community Board</h3>
-            <p>A shared calendar for deadlines &mdash; scholarships, competitions, sign-ups &mdash; plus a success wall for celebrating academic wins of every size.</p>
+
+          <a class="glass-surface bento-card bento-d" href="community.html">
+            <span class="coming-soon-badge">Coming Soon</span>
+            <p class="card-eyebrow">Community Board</p>
+            <h3>Success Wall</h3>
+            <div class="wall-chip-list">
+              <p class="wall-chip">🎉 Accepted &mdash; UBC Sauder</p>
+              <p class="wall-chip">🎉 First Robotics regional win</p>
+            </div>
+            <span class="card-link">Celebrate a win</span>
           </a>
         </div>
       </div>
     </section>
 
-    <section id="contact" class="section section-cta">
+    <section id="features" class="section section-alt section-centered">
+      <div class="container">
+        <h2>Also on Beacon</h2>
+        <div class="feature-grid">
+          <a class="feature-card" href="interviews.html">
+            <span class="feature-index">01</span>
+            <h3>Monthly Interviews</h3>
+            <p>A digital series featuring interviews with successful students or graduates sharing and discussing their journey.</p>
+          </a>
+          <a class="feature-card" href="forums.html">
+            <span class="feature-index">02</span>
+            <h3>Common-Goal Forums</h3>
+            <p>Students tag their interests, goals, or field of study to discover peers with the same aspirations &mdash; facilitating study groups and shared advice.</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-cta section-centered">
       <div class="container">
         <h2>Get Involved</h2>
         <p class="section-lede">
