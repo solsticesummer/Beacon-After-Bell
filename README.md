@@ -40,6 +40,13 @@ Main MVP: a user-friendly website organized by grade level, academics, streams, 
 
 Static HTML/CSS/JS, hosted on GitHub Pages.
 
+## Design
+
+The 2026 "Prism" identity: one beacon light, many paths. Bright warm-white canvas, beacon-gold
+primary, and a spectrum of accents that color-code each section of the site. The full design
+system (palette, type, components, logo blueprint) lives in [`docs/DESIGN.md`](docs/DESIGN.md);
+expanded feature concepts live in [`docs/FEATURES.md`](docs/FEATURES.md).
+
 ## Development
 
 This is a static site — no build step required.
