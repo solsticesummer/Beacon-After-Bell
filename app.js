@@ -104,6 +104,14 @@
   const fromHash = tabs.find(
     (t) => '#' + t.getAttribute('aria-controls') === window.location.hash
   );
+  if (!fromHash && window.location.hash) {
+    // A hash was given but didn't match any tab (stale link, typo, or a
+    // renamed grade id) — warn instead of silently opening the default
+    // tab, so a broken deep link is visible during development/QA.
+    console.warn(
+      `Timeline tabs: no tab found for hash "${window.location.hash}"; falling back to the default tab.`
+    );
+  }
   select(fromHash || tabs.find((t) => t.getAttribute('aria-selected') === 'true') || tabs[0], { focus: false });
 })();
 

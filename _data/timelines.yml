@@ -1,0 +1,51 @@
+# Grade-by-grade milestones for the Timelines page, in display order.
+# Each grade keeps the same hue it wears on the homepage grade chips
+# (see docs/DESIGN.md — hue-coding is wayfinding, not decoration).
+- id: grade-9
+  label: "Grade 9"
+  hue: cyan
+  milestones:
+    - title: "Build strong habits"
+      body: "Focus on consistent study routines and time management — the foundation everything else is built on."
+    - title: "Explore broadly"
+      body: "Try clubs, sports, and activities widely. This is the year to discover interests, not narrow them."
+    - title: "Course selection"
+      body: "Choose Grade 10 courses that keep options open, especially in math and science prerequisites."
+    - title: "Start a \"wins\" journal"
+      body: "Keep a running record of projects and achievements — future-you writing essays will thank you."
+- id: grade-10
+  label: "Grade 10"
+  hue: violet
+  milestones:
+    - title: "Deepen 1–2 interests"
+      body: "Begin committing to a couple of activities where you can grow into leadership by Grade 11–12."
+    - title: "First competitions"
+      body: "Enter accessible contests (math, writing, science fairs) to test the waters and build confidence."
+    - title: "Consider IB / AP paths"
+      body: "Learn how IB and AP work at your school and whether they fit your goals before Grade 11 selections."
+    - title: "Summer planning"
+      body: "Look into volunteering, courses, or projects for the summer — unstructured months add up."
+- id: grade-11
+  label: "Grade 11"
+  hue: magenta
+  milestones:
+    - title: "Grades matter most now"
+      body: "Grade 11 marks weigh heavily in Canadian admissions — prioritize your core academic courses."
+    - title: "Standardized tests"
+      body: "If applying to the US/UK, plan SAT/ACT timing. Register early and build a study schedule."
+    - title: "Step into leadership"
+      body: "Take on a real role in your key activities — depth and initiative over a long list."
+    - title: "Research programs"
+      body: "Start a shortlist of universities and programs, noting their specific requirements and deadlines."
+- id: grade-12
+  label: "Grade 12"
+  hue: gold
+  milestones:
+    - title: "Finalize your list"
+      body: "Lock in target, match, and safety schools and track every deadline in one place."
+    - title: "Write your essays"
+      body: "Draft early. Use the <a href=\"vault.html\">Vault</a> for inspiration, then make it unmistakably yours."
+    - title: "Requests & references"
+      body: "Ask teachers for references well ahead of time and gather any supplementary forms (AIF, portfolios)."
+    - title: "Scholarships & submit"
+      body: "Apply for scholarships alongside admissions — then submit early to avoid the last-minute crush."
