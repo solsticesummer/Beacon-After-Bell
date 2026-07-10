@@ -38,7 +38,11 @@ Main MVP: a user-friendly website organized by grade level, academics, streams, 
 
 ## Tech Stack
 
-Static HTML/CSS/JS, hosted on GitHub Pages.
+Static HTML/CSS/JS built with Jekyll, hosted on GitHub Pages. GitHub Pages runs Jekyll natively —
+pushing to `main` rebuilds and redeploys automatically, no separate build service or CI config
+needed. Content (essays, interviews, blog posts, timeline milestones, FAQ, the daily quote) lives
+in Markdown files and YAML data files under `_essays/`, `_interviews/`, `_posts/`, and `_data/`
+rather than hardcoded HTML — see [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to add new content.
 
 ## Design
 
@@ -49,15 +53,24 @@ expanded feature concepts live in [`docs/FEATURES.md`](docs/FEATURES.md).
 
 ## Development
 
-This is a static site — no build step required.
+GitHub Pages builds this with Jekyll automatically on every push — you don't need anything
+installed locally just to ship a change. Push to `main`, then check the repo's Pages build status
+and reload the live site.
+
+Local preview is optional, and only buys a faster feedback loop (see the rendered page in seconds
+instead of waiting on a remote build):
 
 ```bash
-python3 -m http.server 8000
+bundle install
+bundle exec jekyll serve   # http://localhost:4000
 ```
 
-Then visit `http://localhost:8000`.
+Requires Ruby + Bundler. If you don't have (or don't want) a Ruby toolchain, skip this — pushing
+and checking the Pages build is a completely valid, zero-install way to iterate, just slower per
+round-trip.
 
 ## Contributing
 
-Beacon After Bell is just getting started. If you're a student, educator, or graduate who wants
-to help build this, reach out via the site's contact section.
+Beacon After Bell is just getting started, and it runs on real essays, quotes, and interviews
+from real students and grads. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to submit content
+and how a maintainer turns an accepted submission into a published page.

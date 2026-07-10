@@ -1,1 +1,12 @@
 CLAUDE.md
+
+# Jekyll (only relevant if you install Ruby/Jekyll locally — GitHub
+# Pages builds the site remotely on every push either way)
+_site/
+.jekyll-cache/
+.bundle/
+vendor/bundle/
+
+# Python (scripts/new_content.py)
+__pycache__/
+*.pyc
