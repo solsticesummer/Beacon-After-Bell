@@ -1,17 +1,21 @@
-# Beacon After Bell — Design System ("Prism", 2026)
+# Beacon After Bell — Design System ("Prism, Printed", 2026)
 
 The reference for every visual decision on the site. If you're about to style something,
 read the relevant section here first; if you're about to *invent* something, add it here after.
 
 ## 1. Brand idea
 
-**One light, many paths.** A beacon's light passes through the student body and splits into
-a spectrum: one guiding light (the non-profit's mission), many paths (grades, streams,
-interests). The identity is bright, warm, and energetic — designed to project **energy,
-belief, and motivation** to 14–18 year olds. It is deliberately:
+**One light, many paths — rendered as print, not glow.** A beacon's light passes through
+the student body and splits into a spectrum: one guiding light (the non-profit's mission),
+many paths (grades, streams, interests). The light is drawn the way a well-made student
+publication would print it: hard-edged spectrum bars and flat tints, never blur, glass, or
+ambient gradients. The identity is bright, warm, and energetic — designed to project
+**energy, belief, and motivation** to 14–18 year olds. It is deliberately:
 
 - **light-only** — no dark surfaces anywhere; dark themes read gloomy and off-message;
 - **colorful with purpose** — every accent hue *means* something (see hue-coding below);
+- **hard-edged** — color arrives as solid bars, plates, and rules with crisp boundaries;
+  blurred glows and glassmorphism read as template AI output and are banned;
 - **neither childish nor corporate** — vivid color balanced by a serious deep-indigo ink
   and generous whitespace.
 
@@ -86,32 +90,47 @@ page-hero h1 `clamp(2rem, 4vw, 3rem)`. Never one font for both roles.
 
 ## 4. Space, radius, depth
 
-- Layout: centered `.container`, `--max-width: 1120px`, 24px side padding.
+- Layout: centered `.container`, `--max-width: 1120px`, 24px side padding. Homepage
+  sections open with `.section-head` — headline + spectrum-rule left, standfirst right,
+  on a 5fr/7fr grid — instead of centered stacks.
 - Section rhythm: `.section` = 88px vertical; `.grade-band` = 64px (compact).
-- Radius: `--radius: 20px` (cards), `--radius-sm: 12px` (chips, inputs), `999px` (pills).
-- Depth has three planes: canvas → white card (`--shadow-card`) → floating glass
-  (`.glass-surface`, backdrop-blur). Shadows are **layered and tinted** (gold + violet,
-  low opacity) — never a flat single-layer gray shadow.
+- Radius: `--radius: 20px` (cards), `--radius-sm: 12px` (chips, panels, inputs),
+  `999px` (pills).
+- Depth has two planes: canvas → card (`--shadow-card`). There is no glass/floating
+  plane. Surfaces that need presence use a flat `color-mix()` tint of their hue on white
+  (≤ 10% hue, so ink text keeps its contrast headroom) plus a solid hue border. Shadows
+  are **layered and tinted** (gold + violet, low opacity) — never a flat gray shadow.
 
 ## 5. Signature elements
 
-### Prism Beam (homepage hero only)
-A blurred column of gold light refracting into the four spectrum hues, drifting slowly
-behind the hero copy (`.prism-beam`). Implementation: layered `linear-gradient` on a
-pseudo-element, `filter: blur(46px)`, animated with **transform only**, 16s alternate.
-The global `prefers-reduced-motion` rule freezes it. One big animation per site — don't
-add competing motion elsewhere.
+### Spectrum masthead (site-wide)
+A 3px band of the five hues in **hard stops** (`linear-gradient(90deg, violet 0 20%,
+cyan 20% 40%, …)`) under the sticky header, via `.site-header::after`. Pure CSS, so the
+shared header markup stays byte-identical across pages. This is the beam printed flat —
+the site's constant signature.
+
+### Prism Fan (homepage hero only)
+Five solid bars of stepped widths — violet, cyan, gold, coral, magenta — skewed as one
+unit (`.prism-fan`, `skewY(-8deg)`) in the right column of the asymmetric hero grid: one
+light splitting into paths. **Static by design**; the site has no keyframe animation, so
+the motion budget lives entirely in hover/focus micro-interactions. Hidden below 720px.
+
+### Page plates (interior heroes)
+`.page-hero` is a flat plate tinted with the page's hue (8% `color-mix()` on white)
+closed by a 2px solid hue rule — wayfinding you can read at a glance.
 
 ### Spectrum rule
-`hr.spectrum-rule` — a 4px pill gradient of all five hues. On the homepage it shows the
-full spectrum; inside a `.hue-*` scope it collapses to the page's own hue fading into
-gold. Used under interior page-hero headings. It's the beam, echoed quietly.
+`hr.spectrum-rule` — a 4px pill gradient of all five hues. In `.section-head` it sits
+under homepage section headings; inside a `.hue-*` scope it collapses to the page's own
+hue fading into gold. It's the beam, echoed quietly.
 
 ## 6. Components (inventory)
 
 `.btn-primary` (gold, ink text) · `.btn-secondary` (outline) · `.nav-cta` (header pill) ·
-`.skip-link` · `.grade-chip` (hue left-border entry card) · `.glass-surface` ·
-`.bento-grid`/`.bento-card` · `.beacon-card` (Tonight's Beacon quote) · `.feature-card` ·
+`.skip-link` · `.section-head` (offset headline/standfirst grid) · `.grade-chip` (hue
+left-border entry card) · `.prism-fan` (hero signature) · `.archive-layout` =
+`.archive-lead` (hue-tinted lead panel) + `.archive-list`/`.archive-row` (hue left-border
+index rows) · `.beacon-card` (flat gold plate, Tonight's Beacon quote) · `.feature-card` ·
 `.essay-card` + `.essay-tag` · `.tabs`/`.tab-btn` (state via `aria-selected`) ·
 `.timeline` · `.accordion` (state via `aria-expanded`) · `.post-card` · `.interview-card` ·
 `.cs-panel` (coming-soon) · `.soon-chip` · `.spectrum-rule` · `.wall-chip` ·
@@ -125,11 +144,12 @@ focus-visible (2px violet outline), and active states.
 ### Adding a new component (walkthrough)
 1. Check the inventory — extend before inventing.
 2. Colors: `var(--hue)`/`var(--hue-dim)` if it should follow the page hue, otherwise
-   tokens. Text = `-deep`/`-dim` tier only.
+   tokens. Text = `-deep`/`-dim` tier only. Tinted surfaces = flat `color-mix()` of the
+   hue on white at ≤ 10% — never a blurred gradient, glass, or grain overlay.
 3. Type: `--display` for headings/numbers, `--sans` for everything else.
-4. Surfaces: pick a depth plane (canvas / card / glass) rather than a new shadow.
+4. Surfaces: pick a depth plane (canvas / card) rather than a new shadow.
 5. Motion: `transform`/`opacity` only, spring easing `cubic-bezier(0.16, 1, 0.3, 1)`,
-   never `transition: all`.
+   never `transition: all`, and no keyframe animation — hover/focus states only.
 6. Verify contrast for any new text color pairing (≥ 4.5:1) and add it to this doc.
 
 ## 7. Logo blueprint
@@ -151,8 +171,9 @@ flank the dome.
 
 ## 8. Motion & accessibility floor
 
-- All animation: `transform`/`opacity` only; global `prefers-reduced-motion: reduce`
-  collapses every transition/animation to 0.001ms.
+- The site has **no keyframe animation** — motion is hover/focus micro-interactions
+  only, `transform`/`opacity` only; the global `prefers-reduced-motion: reduce` rule
+  (kept as a safety net) collapses every transition to 0.001ms.
 - Every page: skip link → `<main id="main">`; `aria-current="page"` in the nav;
   landmarks (`header`/`nav`/`main`/`footer`); unique title + meta description.
 - Tabs: full APG pattern (roving tabindex, ArrowLeft/Right/Home/End, `aria-controls`,
