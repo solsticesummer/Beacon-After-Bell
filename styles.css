@@ -943,7 +943,7 @@ a.bento-card {
 .vault-count {
   color: var(--ink-soft);
   font-size: 0.9rem;
-  margin: 32px 0 20px;
+  margin: 0 0 20px;
 }
 
 .vault-grid {

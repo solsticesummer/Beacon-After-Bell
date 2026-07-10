@@ -114,6 +114,9 @@
 
   triggers.forEach((btn) => {
     const panel = document.getElementById(btn.getAttribute('aria-controls'));
+    // Markup ships with panels open so no-JS readers see the answers;
+    // collapse to the aria-expanded state once the script is running.
+    panel.hidden = btn.getAttribute('aria-expanded') !== 'true';
     btn.addEventListener('click', () => {
       const open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!open));

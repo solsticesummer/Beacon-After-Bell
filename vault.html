@@ -3,36 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Living Archive / Vault · Beacon After Bell</title>
+  <title>Essay Vault · Beacon After Bell</title>
   <meta name="description" content="A searchable database of successful college application essays, categorized by university, program, and school.">
+  <meta property="og:site_name" content="Beacon After Bell">
+  <meta property="og:title" content="Essay Vault · Beacon After Bell">
+  <meta property="og:description" content="Successful college application essays, searchable by university and program — shared by the students who wrote them.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://solsticesummer.github.io/Beacon-After-Bell/vault.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- SHARED:HEADER — keep in sync across all pages (see CLAUDE.md).
+       Allowed per-page diffs: aria-current="page" on the active link,
+       and #top/#contact anchors on index vs index.html#… here. -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
-        <img src="assets/logo.svg" alt="Beacon After Bell">
+        <img src="assets/logo.svg" alt="">
         Beacon <span>After Bell</span>
       </a>
-      <nav class="nav">
-        <a href="vault.html" class="active">Vault</a>
+      <nav class="nav" aria-label="Primary">
+        <a href="vault.html" aria-current="page">Vault</a>
         <a href="timelines.html">Timelines</a>
         <a href="blog.html">Blog</a>
         <a href="interviews.html">Interviews</a>
-        <a href="index.html#contact">Get Involved</a>
+        <a href="index.html#contact" class="nav-cta">Get Involved</a>
       </nav>
     </div>
   </header>
 
-  <main>
+  <!-- hue-violet on <main> scopes every accent on this page (eyebrow,
+       tags, focus tints, links) to the Vault's spectrum color. -->
+  <main id="main" class="hue-violet">
     <section class="page-hero section-glow">
       <div class="container">
         <a href="index.html" class="back-link">&larr; Back to home</a>
         <p class="eyebrow">Living Archive</p>
         <h1>The Vault</h1>
+        <hr class="spectrum-rule">
         <p>A searchable database of successful college application essays &mdash; categorized by university, program, and school &mdash; so you can learn from the students who came before you.</p>
       </div>
     </section>
@@ -60,7 +75,9 @@
           </select>
         </div>
 
-        <p class="vault-count" id="vault-count"></p>
+        <!-- aria-live: filter results are announced to screen readers
+             without moving focus away from the search box. -->
+        <p class="vault-count" id="vault-count" aria-live="polite"></p>
 
         <div class="vault-grid" id="vault-grid">
           <article class="essay-card" data-university="UBC" data-program="Engineering" data-school="Lord Byng Secondary">
@@ -113,9 +130,12 @@
           </article>
         </div>
 
-        <p class="no-results" id="no-results" hidden>No essays match those filters yet. Try clearing the search or a filter.</p>
+        <p class="no-results" id="no-results" hidden>
+          No essays match those filters yet.
+          <button type="button" id="clear-filters">Clear the search and filters</button>
+        </p>
 
-        <p class="vault-count" style="margin-top:32px">
+        <p class="vault-count mt-lg">
           These are illustrative samples. The full Vault &mdash; with real, contributed essays and moderation &mdash; is being built.
           <a href="index.html#contact">Want to contribute yours?</a>
         </p>
@@ -123,8 +143,35 @@
     </section>
   </main>
 
+  <!-- SHARED:FOOTER — keep in sync across all pages (see CLAUDE.md).
+       Allowed per-page diff: index.html#contact here vs #contact on index. -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">
+          <img src="assets/logo.svg" alt="">
+          Beacon <span>After Bell</span>
+        </a>
+        <p>Student-founded in Vancouver, BC &mdash; shifting the focus from individual success to collective growth.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Explore">
+        <h2 class="footer-heading">Explore</h2>
+        <ul>
+          <li><a href="vault.html">Essay Vault</a></li>
+          <li><a href="timelines.html">Timelines</a></li>
+          <li><a href="blog.html">What I Wish I Knew</a></li>
+          <li><a href="interviews.html">Interviews</a></li>
+          <li><a href="forums.html">Forums<span class="soon-chip">Soon</span></a></li>
+          <li><a href="community.html">Community Board<span class="soon-chip">Soon</span></a></li>
+        </ul>
+      </nav>
+      <div class="footer-contact">
+        <h2 class="footer-heading">Get involved</h2>
+        <p>Students, educators, and grads who want to help build this &mdash; reach out.</p>
+        <a href="mailto:hello@beaconafterbell.org">hello@beaconafterbell.org</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
       <p>&copy; 2026 Beacon After Bell &middot; Vancouver, BC</p>
     </div>
   </footer>
