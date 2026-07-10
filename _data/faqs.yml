@@ -1,0 +1,12 @@
+# Blog page FAQ accordion. List order is display order — no `order`
+# field needed, unlike a collection (which defaults to alphabetical).
+- question: "Do Grade 11 marks really matter more than Grade 12?"
+  answer: "For many Canadian universities, early admission offers are based on Grade 11 and first-semester Grade 12 marks, so a strong Grade 11 year gives you the most flexibility. Grade 12 finals still matter for final/conditional offers."
+- question: "IB or AP — which should I choose?"
+  answer: "Neither is universally \"better.\" IB is a structured, broad program; AP lets you pick individual subjects. Choose based on what your school offers, your workload preferences, and the universities you're targeting."
+- question: "When should I take the SAT?"
+  answer: "If you're applying to US or some UK/international programs, most students take it in the spring of Grade 11 with a possible retake in early Grade 12. Canadian universities generally don't require it."
+- question: "How many extracurriculars do I need?"
+  answer: "There's no magic number. Sustained commitment and leadership in a few activities almost always reads stronger than a long list of one-off memberships."
+- question: "Can I contribute my own advice or essay?"
+  answer: "Soon — contributions, comments, and discussion will open once we launch accounts. In the meantime, reach out through <a href=\"index.html#contact\">Get Involved</a> and we'll feature it."

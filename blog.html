@@ -20,30 +20,9 @@ hue: coral
   <div class="container">
     <h2>Latest reflections</h2>
     <div class="post-list">
-      <article class="post-card">
-        <p class="kicker">What I Wish I Knew</p>
-        <h3>Grades open doors, but they aren't the story</h3>
-        <p>I spent Grade 11 chasing a perfect average and forgot to do anything I could actually write about. Depth beats a flawless transcript.</p>
-        <p class="byline">&mdash; Alumni, UBC Science</p>
-      </article>
-      <article class="post-card">
-        <p class="kicker">What I Would Have Done</p>
-        <h3>Start the essays in the summer</h3>
-        <p>If I could redo Grade 12, I'd draft my personal profile in July. Writing under deadline in December made every sentence worse.</p>
-        <p class="byline">&mdash; Graduate, Waterloo CS</p>
-      </article>
-      <article class="post-card">
-        <p class="kicker">What I Wish I Knew</p>
-        <h3>Ask for help earlier than feels comfortable</h3>
-        <p>Teachers, older students, counsellors &mdash; everyone I eventually asked wished I'd come sooner. Nobody thinks less of you for it.</p>
-        <p class="byline">&mdash; Current student, Grade 12</p>
-      </article>
-      <article class="post-card">
-        <p class="kicker">What I Would Have Done</p>
-        <h3>Pick two activities and go deep</h3>
-        <p>A page-long activity list impressed no one. The two things I led and genuinely cared about were what people asked me about.</p>
-        <p class="byline">&mdash; Alumni, McGill Arts</p>
-      </article>
+      {% for post in site.posts %}
+        {% include post-card.html post=post %}
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -56,36 +35,14 @@ hue: coral
          inside <h3> so the questions are real headings. Panels ship
          open in markup for no-JS readers; the script collapses them. -->
     <div class="accordion">
+      {% for faq in site.data.faqs %}
       <div class="accordion-item">
         <h3 class="accordion-heading">
-          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-1">Do Grade 11 marks really matter more than Grade 12?</button>
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-{{ forloop.index }}">{{ faq.question }}</button>
         </h3>
-        <div class="accordion-panel" id="faq-1">For many Canadian universities, early admission offers are based on Grade 11 and first-semester Grade 12 marks, so a strong Grade 11 year gives you the most flexibility. Grade 12 finals still matter for final/conditional offers.</div>
+        <div class="accordion-panel" id="faq-{{ forloop.index }}">{{ faq.answer }}</div>
       </div>
-      <div class="accordion-item">
-        <h3 class="accordion-heading">
-          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-2">IB or AP &mdash; which should I choose?</button>
-        </h3>
-        <div class="accordion-panel" id="faq-2">Neither is universally "better." IB is a structured, broad program; AP lets you pick individual subjects. Choose based on what your school offers, your workload preferences, and the universities you're targeting.</div>
-      </div>
-      <div class="accordion-item">
-        <h3 class="accordion-heading">
-          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-3">When should I take the SAT?</button>
-        </h3>
-        <div class="accordion-panel" id="faq-3">If you're applying to US or some UK/international programs, most students take it in the spring of Grade 11 with a possible retake in early Grade 12. Canadian universities generally don't require it.</div>
-      </div>
-      <div class="accordion-item">
-        <h3 class="accordion-heading">
-          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-4">How many extracurriculars do I need?</button>
-        </h3>
-        <div class="accordion-panel" id="faq-4">There's no magic number. Sustained commitment and leadership in a few activities almost always reads stronger than a long list of one-off memberships.</div>
-      </div>
-      <div class="accordion-item">
-        <h3 class="accordion-heading">
-          <button class="accordion-trigger" aria-expanded="false" aria-controls="faq-5">Can I contribute my own advice or essay?</button>
-        </h3>
-        <div class="accordion-panel" id="faq-5">Soon &mdash; contributions, comments, and discussion will open once we launch accounts. In the meantime, reach out through <a href="index.html#contact">Get Involved</a> and we'll feature it.</div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
