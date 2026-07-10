@@ -1,40 +1,64 @@
+/* ============================================================
+   Beacon After Bell — 2026 "Prism" design system
+   One beacon light, many paths: warm-white canvas, beacon-gold
+   primary, and a spectrum of accents that color-code each
+   section of the site (violet=Vault, cyan=Timelines,
+   coral=Blog, magenta=Interviews, gold=CTAs/wins).
+   All colors live here as tokens — never hardcode values in rules.
+   ============================================================ */
+
 :root {
-  /* Aurora — bright surfaces. No pastel hue backgrounds, no dark mode: always near-white. */
+  /* Aurora — bright surfaces. Light-only by design: always near-white. */
   --aurora-base: #fffdf9;       /* crisp warm off-white, primary page canvas */
   --aurora-base-deep: #ffffff;  /* pure white — section-alt bands + every card surface */
-  --aurora-peach: #fffdf9;      /* same warm off-white as base, used by hero/page-hero */
-  --aurora-line: #ffe0ec;       /* faint pink-100-equivalent hairline, card borders + dividers */
+  --aurora-line: #ffeacd;       /* warm gold-tinted hairline, card borders + dividers */
 
-  /* Pulse — high-vibrancy pop accents */
-  --pulse-magenta: #ff2ec0;
-  --pulse-coral: #ff5470;
-  --pulse-turquoise: #00d3e8;      /* vibrant cyan */
-  --pulse-turquoise-dim: #0092a3;  /* AA-safe on-light text/icon variant */
-  --pulse-violet: #8b5cf6;
-  --pulse-violet-dim: #6d28d9;
-  --pulse-magenta-dim: #d6199c;
-  --pulse-lime: #f5ff3d;           /* neon yellow */
+  /* Beacon — the gold primary: the light itself.
+     Two-tier rule: bright gold is for FILLS ONLY (1.8:1 on canvas —
+     illegible as text); -deep is the AA text/icon tier (5.8:1). */
+  --beacon-gold: #ffb020;
+  --beacon-gold-bright: #ffd666;
+  --beacon-gold-deep: #8a5a00;
+
+  /* Pulse — the spectrum accent family. Same two-tier rule:
+     bright = fills/graphics, -dim = AA-verified text on light surfaces. */
+  --pulse-violet: #8b5cf6;   --pulse-violet-dim: #6d28d9;  /* Vault / essays   (7.0:1) */
+  --pulse-cyan: #00d3e8;     --pulse-cyan-dim: #007a88;    /* Timelines/grades (5.0:1) */
+  --pulse-coral: #ff5470;    --pulse-coral-dim: #c92544;   /* Blog / WIWIK     (5.4:1) */
+  --pulse-magenta: #ff2ec0;  --pulse-magenta-dim: #c4148d; /* Interviews       (5.4:1) */
 
   /* Ink — text tokens, deep navy-violet instead of near-black */
-  --ink: #1b1140;
-  --ink-soft: #675f8c;
+  --ink: #1b1140;      /* 17.2:1 AAA on canvas */
+  --ink-soft: #5a5378; /* 7.0:1 AAA — darkened in the Prism redesign for AAA */
 
   --radius: 20px;
   --radius-sm: 12px;
   --max-width: 1120px;
-  --display: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --sans: "Inter", "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --display: "Bricolage Grotesque", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 
-  /* Shared soft card shadow — layered + low-opacity, never a flat single-layer shadow */
+  /* Shared soft card shadow — layered + low-opacity, never a flat single-layer
+     shadow. Tinted with the brand's gold + violet instead of neutral gray. */
   --shadow-card:
     0 1px 2px rgba(27, 17, 64, 0.04),
-    0 12px 28px -6px rgba(255, 84, 112, 0.10),
-    0 24px 48px -16px rgba(0, 211, 232, 0.08);
+    0 12px 28px -6px rgba(255, 176, 32, 0.12),
+    0 24px 48px -16px rgba(139, 92, 246, 0.08);
   --shadow-card-hover:
     0 2px 4px rgba(27, 17, 64, 0.05),
-    0 18px 36px -6px rgba(255, 84, 112, 0.14),
-    0 32px 60px -16px rgba(0, 211, 232, 0.12);
+    0 18px 36px -6px rgba(255, 176, 32, 0.18),
+    0 32px 60px -16px rgba(139, 92, 246, 0.12);
 }
+
+/* ------------------------------------------------------------
+   Hue scoping — set a section's spectrum color once, and every
+   component inside it (eyebrows, links, tags, dots) follows.
+   Components read var(--hue)/var(--hue-dim) with a fallback.
+   ------------------------------------------------------------ */
+.hue-violet  { --hue: var(--pulse-violet);  --hue-dim: var(--pulse-violet-dim); }
+.hue-cyan    { --hue: var(--pulse-cyan);    --hue-dim: var(--pulse-cyan-dim); }
+.hue-coral   { --hue: var(--pulse-coral);   --hue-dim: var(--pulse-coral-dim); }
+.hue-magenta { --hue: var(--pulse-magenta); --hue-dim: var(--pulse-magenta-dim); }
+.hue-gold    { --hue: var(--beacon-gold);   --hue-dim: var(--beacon-gold-deep); }
 
 * { box-sizing: border-box; }
 
@@ -61,10 +85,10 @@ h1, h2, h3 {
 }
 
 a {
-  color: var(--pulse-turquoise-dim);
-  text-decoration-color: color-mix(in srgb, var(--pulse-turquoise-dim) 40%, transparent);
+  color: var(--pulse-cyan-dim);
+  text-decoration-color: color-mix(in srgb, var(--pulse-cyan-dim) 40%, transparent);
 }
-a:hover { color: var(--pulse-magenta-dim); }
+a:hover { color: var(--beacon-gold-deep); }
 
 /* Focus states — visible everywhere, per accessibility guardrail */
 a:focus-visible,
@@ -76,11 +100,32 @@ select:focus-visible {
   border-radius: 4px;
 }
 
+/* Skip link — first element in <body>; hidden until keyboard focus
+   so keyboard/screen-reader users can jump past the nav. */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -48px;
+  z-index: 100;
+  padding: 10px 18px;
+  border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+  background: var(--ink);
+  color: var(--aurora-base-deep);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: transform 0.15s ease;
+}
+.skip-link:focus-visible {
+  transform: translateY(48px);
+  outline-offset: 0;
+}
+
 /* ============================================================
    Shared visual-effect utilities
    ============================================================ */
 
-/* Ambient neon glow blur + fine grain, used behind hero + bento section.
+/* Ambient glow blur + fine grain, used behind hero + bento section.
    Lives on a pseudo-element (not the card) so blur isn't clipped. */
 .section-glow {
   position: relative;
@@ -94,8 +139,8 @@ select:focus-visible {
   inset: -10% -5%;
   z-index: -1;
   background:
-    radial-gradient(480px 380px at 15% 20%, color-mix(in srgb, var(--pulse-magenta) 40%, transparent), transparent 70%),
-    radial-gradient(420px 340px at 85% 60%, color-mix(in srgb, var(--pulse-lime) 35%, transparent), transparent 70%);
+    radial-gradient(480px 380px at 15% 20%, color-mix(in srgb, var(--beacon-gold) 38%, transparent), transparent 70%),
+    radial-gradient(420px 340px at 85% 60%, color-mix(in srgb, var(--pulse-violet) 28%, transparent), transparent 70%);
   filter: blur(60px);
   pointer-events: none;
 }
@@ -126,6 +171,29 @@ select:focus-visible {
   box-shadow: var(--shadow-card-hover);
 }
 
+/* Spectrum rule — the signature divider: the beam split into its hues.
+   Interior pages emphasize their own hue via the .hue-* scope. */
+.spectrum-rule {
+  height: 4px;
+  width: 132px;
+  border: none;
+  border-radius: 999px;
+  margin: 0 0 20px;
+  background: linear-gradient(90deg,
+    var(--pulse-violet),
+    var(--pulse-cyan),
+    var(--beacon-gold),
+    var(--pulse-coral),
+    var(--pulse-magenta));
+}
+
+[class*="hue-"] .spectrum-rule,
+.spectrum-rule.hue-solid {
+  background: linear-gradient(90deg,
+    var(--hue, var(--beacon-gold)) 0 55%,
+    var(--beacon-gold-bright));
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     transition-duration: 0.001ms !important;
@@ -133,7 +201,9 @@ select:focus-visible {
   }
 }
 
-/* Header */
+/* ============================================================
+   Header
+   ============================================================ */
 .site-header {
   position: sticky;
   top: 0;
@@ -163,6 +233,8 @@ select:focus-visible {
   letter-spacing: -0.02em;
 }
 
+.logo span { color: var(--beacon-gold-deep); }
+
 .logo img {
   height: 30px;
   width: auto;
@@ -171,6 +243,7 @@ select:focus-visible {
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 28px;
 }
 
@@ -182,15 +255,90 @@ select:focus-visible {
   transition: color 0.15s ease;
 }
 
-.nav a:hover { color: var(--pulse-turquoise-dim); }
-.nav a.active { color: var(--pulse-magenta-dim); }
+.nav a:hover { color: var(--pulse-cyan-dim); }
 
-/* Hero */
+/* aria-current does double duty: it styles the active link AND tells
+   screen readers which page you're on — state lives in the markup. */
+.nav a[aria-current="page"] {
+  color: var(--beacon-gold-deep);
+  text-decoration: underline;
+  text-decoration-color: var(--beacon-gold);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+/* Get Involved is an action, not a place — style it as the one button. */
+.nav .nav-cta {
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: var(--beacon-gold);
+  color: var(--ink);
+  box-shadow: 0 6px 16px -6px color-mix(in srgb, var(--beacon-gold) 60%, transparent);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav .nav-cta:hover {
+  color: var(--ink);
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px -6px color-mix(in srgb, var(--beacon-gold) 75%, transparent);
+}
+.nav .nav-cta:active { transform: translateY(0); }
+
+/* ============================================================
+   Hero + the Prism Beam (signature element)
+   ============================================================ */
 .hero {
   position: relative;
-  padding: 160px 0 120px;
-  background: var(--aurora-peach);
+  isolation: isolate;
+  overflow: hidden;
+  padding: 150px 0 110px;
+  background: var(--aurora-base);
   color: var(--ink);
+}
+
+/* The beam: one column of gold light refracting into the spectrum,
+   drifting slowly behind the hero copy. Blurred gradients, animated
+   with transform only; the global reduced-motion rule freezes it. */
+.prism-beam {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.prism-beam::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: -25%;
+  width: 72%;
+  height: 150%;
+  transform: translateX(-50%) rotate(8deg);
+  background: linear-gradient(100deg,
+    transparent 26%,
+    color-mix(in srgb, var(--pulse-violet) 20%, transparent) 36%,
+    color-mix(in srgb, var(--pulse-cyan) 24%, transparent) 44%,
+    color-mix(in srgb, var(--beacon-gold) 40%, transparent) 50%,
+    color-mix(in srgb, var(--beacon-gold-bright) 34%, transparent) 55%,
+    color-mix(in srgb, var(--pulse-coral) 20%, transparent) 63%,
+    color-mix(in srgb, var(--pulse-magenta) 14%, transparent) 70%,
+    transparent 80%);
+  filter: blur(46px);
+  animation: beam-drift 16s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+}
+
+/* Fine grain over the beam so the gradient doesn't band */
+.prism-beam::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(27, 17, 64, 0.4) 1px, transparent 1px);
+  background-size: 3px 3px;
+  opacity: 0.05;
+}
+
+@keyframes beam-drift {
+  from { transform: translateX(-58%) rotate(6deg); }
+  to   { transform: translateX(-42%) rotate(11deg); }
 }
 
 .eyebrow {
@@ -198,7 +346,7 @@ select:focus-visible {
   letter-spacing: 0.12em;
   font-size: 0.76rem;
   font-weight: 700;
-  color: var(--pulse-magenta-dim);
+  color: var(--hue-dim, var(--beacon-gold-deep));
   margin: 0 0 18px;
 }
 
@@ -224,7 +372,9 @@ select:focus-visible {
   flex-wrap: wrap;
 }
 
-/* Buttons */
+/* ============================================================
+   Buttons
+   ============================================================ */
 .btn {
   display: inline-block;
   padding: 14px 30px;
@@ -238,18 +388,20 @@ select:focus-visible {
 .btn:hover { transform: translateY(-2px) scale(1.02); }
 .btn:active { transform: translateY(0) scale(0.99); }
 
+/* Gold primary: ink-on-gold is 9.6:1 (AAA) — the button IS the beacon. */
 .btn-primary {
-  background: var(--pulse-turquoise);
+  background: var(--beacon-gold);
   color: var(--ink);
   box-shadow:
-    0 1px 2px color-mix(in srgb, var(--pulse-turquoise) 30%, transparent),
-    0 10px 24px -6px color-mix(in srgb, var(--pulse-turquoise) 45%, transparent);
+    0 1px 2px color-mix(in srgb, var(--beacon-gold) 30%, transparent),
+    0 10px 24px -6px color-mix(in srgb, var(--beacon-gold) 50%, transparent);
 }
 
 .btn-primary:hover {
+  color: var(--ink);
   box-shadow:
-    0 2px 4px color-mix(in srgb, var(--pulse-turquoise) 35%, transparent),
-    0 16px 36px -6px color-mix(in srgb, var(--pulse-magenta) 40%, transparent);
+    0 2px 4px color-mix(in srgb, var(--beacon-gold) 35%, transparent),
+    0 16px 36px -6px color-mix(in srgb, var(--beacon-gold-bright) 55%, transparent);
 }
 
 .btn-secondary {
@@ -259,11 +411,13 @@ select:focus-visible {
 }
 
 .btn-secondary:hover {
-  border-color: var(--pulse-magenta);
-  color: var(--pulse-magenta-dim);
+  border-color: var(--beacon-gold);
+  color: var(--beacon-gold-deep);
 }
 
-/* Sections */
+/* ============================================================
+   Sections
+   ============================================================ */
 .section {
   padding: 88px 0;
   border-top: 1px solid var(--aurora-line);
@@ -287,7 +441,7 @@ select:focus-visible {
 
 .section-cta {
   text-align: center;
-  background: var(--aurora-peach);
+  background: var(--aurora-base);
 }
 
 .section-cta .section-lede {
@@ -310,11 +464,100 @@ select:focus-visible {
 }
 
 .section-centered .bento-grid,
-.section-centered .feature-grid {
+.section-centered .feature-grid,
+.section-centered .grade-strip {
   text-align: left;
 }
 
-/* Feature grid (slimmed: Interviews + Forums on the landing page) */
+/* ============================================================
+   Grade band — "Start where you are" (homepage entry points)
+   The 9→12 hue progression ends on gold: senior year is the light.
+   ============================================================ */
+.grade-band { padding: 64px 0; }
+
+.grade-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+}
+
+.grade-chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 20px 22px 18px;
+  background: var(--aurora-base-deep);
+  border: 1px solid var(--aurora-line);
+  border-left: 4px solid var(--hue, var(--beacon-gold));
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-card);
+  text-decoration: none;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.15s ease;
+}
+
+.grade-chip:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--hue-dim, var(--beacon-gold-deep));
+}
+
+.grade-num {
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+  color: var(--hue-dim, var(--beacon-gold-deep));
+}
+
+.grade-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   Tonight's Beacon — one pick from the archive per day
+   ============================================================ */
+.beacon-card {
+  max-width: 720px;
+  margin: 32px auto 0;
+  padding: 36px 40px 30px;
+  text-align: center;
+}
+
+.beacon-card blockquote {
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+
+.beacon-card figcaption {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+}
+
+.beacon-card figcaption a { font-weight: 700; }
+
+.beacon-note {
+  margin: 18px 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* ============================================================
+   Feature grid (Interviews + Forums on the landing page)
+   ============================================================ */
 .feature-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -333,7 +576,7 @@ select:focus-visible {
 }
 
 .feature-card:hover {
-  border-color: var(--pulse-turquoise-dim);
+  border-color: var(--hue-dim, var(--beacon-gold-deep));
   transform: translateY(-3px) scale(1.01);
   box-shadow: var(--shadow-card-hover);
 }
@@ -343,7 +586,7 @@ select:focus-visible {
   font-family: var(--display);
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--pulse-turquoise-dim);
+  color: var(--hue-dim, var(--beacon-gold-deep));
   border: 1px solid currentColor;
   border-radius: 999px;
   width: 30px;
@@ -364,6 +607,13 @@ select:focus-visible {
   color: var(--ink-soft);
   font-size: 0.95rem;
 }
+
+a.feature-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
 
 /* ============================================================
    Living Archive — bento grid
@@ -419,7 +669,7 @@ a.bento-card {
   letter-spacing: 0.1em;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--pulse-turquoise-dim);
+  color: var(--hue-dim, var(--pulse-cyan-dim));
   margin: 0;
 }
 
@@ -429,7 +679,7 @@ a.bento-card {
   gap: 6px;
   font-weight: 700;
   font-size: 0.92rem;
-  color: var(--pulse-turquoise-dim);
+  color: var(--hue-dim, var(--pulse-cyan-dim));
   text-decoration: none;
   margin-top: auto;
   padding-top: 6px;
@@ -437,7 +687,7 @@ a.bento-card {
 }
 
 .card-link::after { content: "\2192"; }
-.card-link:hover { gap: 10px; color: var(--pulse-magenta-dim); }
+.card-link:hover { gap: 10px; color: var(--beacon-gold-deep); }
 
 /* Card B: mini grade-step preview */
 .mini-steps {
@@ -468,8 +718,8 @@ a.bento-card {
 
 .mini-steps li.active { color: var(--ink); }
 .mini-steps li.active::before {
-  background: var(--pulse-turquoise);
-  box-shadow: 0 0 0 5px color-mix(in srgb, var(--pulse-turquoise) 22%, transparent);
+  background: var(--hue, var(--pulse-cyan));
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--hue, var(--pulse-cyan)) 22%, transparent);
 }
 
 /* Card C: pull-quote preview */
@@ -482,7 +732,7 @@ a.bento-card {
   margin: 2px 0 0;
 }
 
-/* Card D: success-wall chip preview */
+/* Card D: success-wall chip preview — wins glow gold */
 .wall-chip-list {
   display: flex;
   flex-direction: column;
@@ -491,8 +741,8 @@ a.bento-card {
 }
 
 .wall-chip {
-  background: color-mix(in srgb, var(--pulse-lime) 18%, var(--aurora-base));
-  border: 1px solid color-mix(in srgb, var(--pulse-lime) 40%, transparent);
+  background: color-mix(in srgb, var(--beacon-gold) 14%, var(--aurora-base));
+  border: 1px solid color-mix(in srgb, var(--beacon-gold) 40%, transparent);
   border-radius: var(--radius-sm);
   padding: 9px 14px;
   font-size: 0.86rem;
@@ -512,18 +762,94 @@ a.bento-card {
   }
 }
 
-/* Footer */
+/* ============================================================
+   Footer — full sitemap so no page (Forums/Community) is orphaned
+   ============================================================ */
 .site-footer {
   background: var(--aurora-base-deep);
   border-top: 1px solid var(--aurora-line);
-  padding: 32px 0;
+  padding: 56px 0 28px;
 }
 
-.site-footer p {
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.4fr;
+  gap: 40px;
+  padding-bottom: 36px;
+}
+
+.footer-brand p {
+  margin: 14px 0 0;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  max-width: 34ch;
+}
+
+.footer-heading {
+  font-family: var(--display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--beacon-gold-deep);
+  margin: 0 0 14px;
+}
+
+.footer-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+.footer-nav a:hover { color: var(--beacon-gold-deep); }
+
+.soon-chip {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--pulse-violet) 16%, transparent);
+  color: var(--pulse-violet-dim);
+  vertical-align: 1px;
+}
+
+.footer-contact p {
+  margin: 0 0 14px;
+  color: var(--ink-soft);
+  font-size: 0.92rem;
+  max-width: 34ch;
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--aurora-line);
+  padding-top: 22px;
+}
+
+.footer-bottom p {
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.85rem;
   text-align: center;
+}
+
+@media (max-width: 860px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
 }
 
 @media (max-width: 640px) {
@@ -546,11 +872,12 @@ a.bento-card {
    Interior pages
    ============================================================ */
 
-/* Compact hero for interior pages */
+/* Compact hero for interior pages; carries the page's hue via
+   a .hue-* class on the section. */
 .page-hero {
   position: relative;
   padding: 96px 0 60px;
-  background: var(--aurora-peach);
+  background: var(--aurora-base);
   color: var(--ink);
 }
 
@@ -580,17 +907,9 @@ a.bento-card {
   font-size: 0.88rem;
   font-weight: 600;
 }
-.page-hero .back-link:hover { color: var(--pulse-magenta-dim); }
+.page-hero .back-link:hover { color: var(--beacon-gold-deep); }
 
-/* Make a home feature card a link without losing its look */
-a.feature-card {
-  display: block;
-  text-decoration: none;
-  color: inherit;
-}
-a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px; }
-
-/* ---------- Vault: filters + grid ---------- */
+/* ---------- Vault: filters + grid (violet) ---------- */
 .vault-controls {
   display: flex;
   flex-wrap: wrap;
@@ -617,14 +936,14 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .vault-controls input:focus,
 .vault-controls select:focus {
   outline: none;
-  border-color: var(--pulse-turquoise-dim);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--pulse-turquoise) 25%, transparent);
+  border-color: var(--hue-dim, var(--pulse-violet-dim));
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--hue, var(--pulse-violet)) 25%, transparent);
 }
 
 .vault-count {
   color: var(--ink-soft);
   font-size: 0.9rem;
-  margin: 0 0 20px;
+  margin: 32px 0 20px;
 }
 
 .vault-grid {
@@ -656,8 +975,8 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   letter-spacing: 0.02em;
   padding: 4px 10px;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--pulse-turquoise) 20%, transparent);
-  color: var(--pulse-turquoise-dim);
+  background: color-mix(in srgb, var(--hue, var(--pulse-violet)) 16%, transparent);
+  color: var(--hue-dim, var(--pulse-violet-dim));
 }
 
 .essay-card h3 { margin: 2px 0 0; font-size: 1.05rem; color: var(--ink); }
@@ -678,7 +997,22 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   padding: 30px 0;
 }
 
-/* ---------- Timelines: tabs + timeline ---------- */
+.no-results button {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: 0.9rem;
+  font-style: normal;
+  color: var(--hue-dim, var(--pulse-violet-dim));
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.no-results button:hover { color: var(--beacon-gold-deep); }
+
+/* ---------- Timelines: tabs + timeline (cyan) ---------- */
 .tabs {
   display: flex;
   flex-wrap: wrap;
@@ -699,16 +1033,15 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease, transform 0.15s ease;
 }
 
-.tab-btn:hover { border-color: var(--pulse-turquoise-dim); color: var(--ink); transform: translateY(-1px); }
+.tab-btn:hover { border-color: var(--hue-dim, var(--pulse-cyan-dim)); color: var(--ink); transform: translateY(-1px); }
 
-.tab-btn.active {
-  background: var(--pulse-turquoise);
-  border-color: var(--pulse-turquoise);
+/* Selected state is driven by aria-selected, not a CSS class —
+   the accessible state and the visual state can never disagree. */
+.tab-btn[aria-selected="true"] {
+  background: var(--hue, var(--pulse-cyan));
+  border-color: var(--hue, var(--pulse-cyan));
   color: var(--ink);
 }
-
-.tab-panel { display: none; }
-.tab-panel.active { display: block; }
 
 .timeline {
   position: relative;
@@ -731,14 +1064,14 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background: var(--pulse-turquoise);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--pulse-turquoise) 22%, transparent);
+  background: var(--hue, var(--pulse-cyan));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--hue, var(--pulse-cyan)) 22%, transparent);
 }
 
 .timeline h3 { margin: 0 0 4px; font-size: 1.05rem; color: var(--ink); }
 .timeline p { margin: 0; color: var(--ink-soft); font-size: 0.94rem; }
 
-/* ---------- Blog: post cards + FAQ accordion ---------- */
+/* ---------- Blog: post cards + FAQ accordion (coral) ---------- */
 .post-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -759,7 +1092,7 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   text-transform: uppercase;
   letter-spacing: 0.07em;
   font-weight: 700;
-  color: var(--pulse-magenta-dim);
+  color: var(--hue-dim, var(--pulse-coral-dim));
   margin: 0 0 8px;
 }
 
@@ -770,6 +1103,10 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 .accordion { margin-top: 8px; border-top: 1px solid var(--aurora-line); }
 
 .accordion-item { border-bottom: 1px solid var(--aurora-line); }
+
+/* Triggers live inside <h3> for document outline; the h3 is reset
+   so the button carries all the visual styling. */
+.accordion-heading { margin: 0; }
 
 .accordion-trigger {
   width: 100%;
@@ -792,22 +1129,21 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   top: 50%;
   transform: translateY(-50%);
   font-size: 1.4rem;
-  color: var(--pulse-turquoise-dim);
+  color: var(--hue-dim, var(--pulse-coral-dim));
   transition: transform 0.15s ease;
 }
 
-.accordion-item.open .accordion-trigger::after { content: "\2013"; }
+/* Open state is driven by aria-expanded — same principle as the tabs. */
+.accordion-trigger[aria-expanded="true"]::after { content: "\2013"; }
 
 .accordion-panel {
-  display: none;
   padding: 0 0 20px;
   color: var(--ink-soft);
   font-size: 0.95rem;
   max-width: 68ch;
 }
-.accordion-item.open .accordion-panel { display: block; }
 
-/* ---------- Interviews ---------- */
+/* ---------- Interviews (magenta) ---------- */
 .interview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -832,12 +1168,12 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
   font-family: var(--display);
   font-weight: 700;
   color: var(--ink);
-  background: var(--pulse-turquoise);
+  background: color-mix(in srgb, var(--hue, var(--pulse-magenta)) 35%, var(--aurora-base-deep));
   margin-bottom: 14px;
 }
 
 .interview-card h3 { margin: 0 0 2px; font-size: 1.05rem; color: var(--ink); }
-.interview-card .role { margin: 0 0 12px; font-size: 0.85rem; color: var(--pulse-magenta-dim); font-weight: 700; }
+.interview-card .role { margin: 0 0 12px; font-size: 0.85rem; color: var(--hue-dim, var(--pulse-magenta-dim)); font-weight: 700; }
 .interview-card blockquote { margin: 0; color: var(--ink-soft); font-size: 0.95rem; font-style: italic; }
 
 /* ---------- Coming Soon ---------- */
@@ -870,3 +1206,6 @@ a.feature-card:hover h3 { text-decoration: underline; text-underline-offset: 3px
 
 .cs-panel h3 { margin: 0 0 10px; font-size: 1.1rem; color: var(--ink); }
 .cs-panel p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+/* Spacing utility — replaces the old inline style="margin-top:32px" */
+.mt-lg { margin-top: 32px; }

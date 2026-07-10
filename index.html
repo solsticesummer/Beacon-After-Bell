@@ -3,32 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beacon After Bell</title>
+  <title>Beacon After Bell — Student-to-student guidance for grades 9–12</title>
   <meta name="description" content="A student-founded non-profit bridging academic years, grades, and age groups through an accessible online database of resources for high school students.">
+  <meta property="og:site_name" content="Beacon After Bell">
+  <meta property="og:title" content="Beacon After Bell — Student-to-student guidance for grades 9–12">
+  <meta property="og:description" content="Essays, timelines, and advice from students who were just in your seat. One light, many paths.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://solsticesummer.github.io/Beacon-After-Bell/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- SHARED:HEADER — keep in sync across all pages (see CLAUDE.md).
+       Allowed per-page diffs: aria-current="page" on the active link,
+       and #top/#contact anchors here vs index.html#… on interior pages. -->
   <header class="site-header">
     <div class="container header-inner">
       <a href="#top" class="logo">
-        <img src="assets/logo.svg" alt="Beacon After Bell">
+        <img src="assets/logo.svg" alt="">
         Beacon <span>After Bell</span>
       </a>
-      <nav class="nav">
+      <nav class="nav" aria-label="Primary">
         <a href="vault.html">Vault</a>
         <a href="timelines.html">Timelines</a>
         <a href="blog.html">Blog</a>
         <a href="interviews.html">Interviews</a>
-        <a href="#contact">Get Involved</a>
+        <a href="#contact" class="nav-cta">Get Involved</a>
       </nav>
     </div>
   </header>
 
-  <main>
-    <section id="top" class="hero section-glow section-centered">
+  <main id="main">
+    <section id="top" class="hero section-centered">
+      <div class="prism-beam" aria-hidden="true"></div>
       <div class="container">
         <p class="eyebrow">Vancouver, BC · Student-Founded Non-Profit</p>
         <h1>Lighting the way between grades, years, and journeys.</h1>
@@ -38,33 +51,58 @@
           from individual success to collective growth.
         </p>
         <div class="hero-actions">
-          <a href="#how" class="btn btn-primary">See how it works</a>
+          <a href="vault.html" class="btn btn-primary">Browse the Essay Vault</a>
           <a href="#contact" class="btn btn-secondary">Get involved</a>
         </div>
       </div>
     </section>
 
-    <section id="what" class="section section-centered">
+    <section class="section grade-band section-centered" aria-labelledby="grade-heading">
       <div class="container">
-        <h2>What we're building</h2>
+        <h2 id="grade-heading">Start where you are</h2>
         <p class="section-lede">
-          A student-founded non-profit designed to bridge between academic years, grades, and
-          age groups through a highly accessible online database of resources.
+          Every grade has its own milestones. Jump straight to yours.
         </p>
-        <p>
-          Our purpose is to ultimately shift the focus from individual success to collective
-          growth amongst high school students &mdash; making them capable of thriving in the
-          navigation of high school, university, and the transition between.
-        </p>
+        <ul class="grade-strip">
+          <li>
+            <a class="grade-chip hue-cyan" href="timelines.html#grade-9">
+              <span class="grade-num">Grade 9</span>
+              <span class="grade-label">Explore widely, build habits</span>
+            </a>
+          </li>
+          <li>
+            <a class="grade-chip hue-violet" href="timelines.html#grade-10">
+              <span class="grade-num">Grade 10</span>
+              <span class="grade-label">Find your stream</span>
+            </a>
+          </li>
+          <li>
+            <a class="grade-chip hue-magenta" href="timelines.html#grade-11">
+              <span class="grade-num">Grade 11</span>
+              <span class="grade-label">The push: APs, SAT, leadership</span>
+            </a>
+          </li>
+          <li>
+            <a class="grade-chip hue-gold" href="timelines.html#grade-12">
+              <span class="grade-num">Grade 12</span>
+              <span class="grade-label">Applications &amp; launch</span>
+            </a>
+          </li>
+        </ul>
       </div>
     </section>
 
-    <section id="how" class="section section-alt section-centered">
+    <section id="mission" class="section section-alt section-centered">
       <div class="container">
-        <h2>How</h2>
+        <h2>Built by students, for students</h2>
         <p class="section-lede">
-          Our main MVP is a user-friendly website organized by grade level, academics, streams,
-          and interests.
+          A user-friendly hub organized by grade level, academics, streams, and interests
+          &mdash; so the path someone found the hard way is easy for the next student to find.
+        </p>
+        <p>
+          Our purpose is to shift the focus from individual success to collective growth
+          amongst high school students &mdash; making them capable of thriving in the
+          navigation of high school, university, and the transition between.
         </p>
       </div>
     </section>
@@ -78,7 +116,7 @@
         </p>
 
         <div class="bento-grid">
-          <a class="glass-surface bento-card bento-a" href="vault.html">
+          <a class="glass-surface bento-card bento-a hue-violet" href="vault.html">
             <p class="card-eyebrow">Living Archive</p>
             <h3>Essay Vault</h3>
             <p>A searchable database of successful college application essays, tagged by university and program.</p>
@@ -88,10 +126,12 @@
               <span class="essay-tag">Life Sciences</span>
               <span class="essay-tag">Computer Science</span>
             </div>
+            <p class="pull-quote">&ldquo;I opened with the robot that failed, not the trophy &mdash; and wrote about what I rebuilt.&rdquo;</p>
+            <p>Every essay is shared by the student who wrote it, so you see what actually worked &mdash; not a template.</p>
             <span class="card-link">Browse the vault</span>
           </a>
 
-          <a class="glass-surface bento-card bento-b" href="timelines.html">
+          <a class="glass-surface bento-card bento-b hue-cyan" href="timelines.html">
             <p class="card-eyebrow">Grades 9&ndash;12</p>
             <h3>Interactive Timelines</h3>
             <p>Milestones and recommended steps, laid out grade by grade toward university.</p>
@@ -104,14 +144,14 @@
             <span class="card-link">See the full path</span>
           </a>
 
-          <a class="glass-surface bento-card bento-c" href="blog.html">
+          <a class="glass-surface bento-card bento-c hue-coral" href="blog.html">
             <p class="card-eyebrow">FAQ &amp; Blog</p>
             <h3>What I Wish I Knew</h3>
             <p class="pull-quote">&ldquo;Start the essays in the summer &mdash; writing under deadline made every sentence worse.&rdquo;</p>
             <span class="card-link">Read more</span>
           </a>
 
-          <a class="glass-surface bento-card bento-d" href="community.html">
+          <a class="glass-surface bento-card bento-d hue-gold" href="community.html">
             <span class="coming-soon-badge">Coming Soon</span>
             <p class="card-eyebrow">Community Board</p>
             <h3>Success Wall</h3>
@@ -125,16 +165,32 @@
       </div>
     </section>
 
+    <section id="tonight" class="section section-centered" aria-labelledby="tonight-heading">
+      <div class="container">
+        <h2 id="tonight-heading">Tonight's Beacon</h2>
+        <p class="section-lede">One pick from the archive, every day.</p>
+        <figure class="beacon-card glass-surface">
+          <blockquote id="beacon-quote">
+            &ldquo;Start the essays in the summer &mdash; writing under deadline made every sentence worse.&rdquo;
+          </blockquote>
+          <figcaption>
+            <span id="beacon-source">What I Wish I Knew · Class of 2025</span>
+            <a id="beacon-link" href="blog.html">Read more</a>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
     <section id="features" class="section section-alt section-centered">
       <div class="container">
         <h2>Also on Beacon</h2>
         <div class="feature-grid">
-          <a class="feature-card" href="interviews.html">
+          <a class="feature-card hue-magenta" href="interviews.html">
             <span class="feature-index">01</span>
             <h3>Monthly Interviews</h3>
             <p>A digital series featuring interviews with successful students or graduates sharing and discussing their journey.</p>
           </a>
-          <a class="feature-card" href="forums.html">
+          <a class="feature-card hue-gold" href="forums.html">
             <span class="feature-index">02</span>
             <h3>Common-Goal Forums</h3>
             <p>Students tag their interests, goals, or field of study to discover peers with the same aspirations &mdash; facilitating study groups and shared advice.</p>
@@ -155,10 +211,39 @@
     </section>
   </main>
 
+  <!-- SHARED:FOOTER — keep in sync across all pages (see CLAUDE.md).
+       Allowed per-page diff: #contact here vs index.html#contact on interior pages. -->
   <footer class="site-footer">
-    <div class="container">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <img src="assets/logo.svg" alt="">
+          Beacon <span>After Bell</span>
+        </a>
+        <p>Student-founded in Vancouver, BC &mdash; shifting the focus from individual success to collective growth.</p>
+      </div>
+      <nav class="footer-nav" aria-label="Explore">
+        <h2 class="footer-heading">Explore</h2>
+        <ul>
+          <li><a href="vault.html">Essay Vault</a></li>
+          <li><a href="timelines.html">Timelines</a></li>
+          <li><a href="blog.html">What I Wish I Knew</a></li>
+          <li><a href="interviews.html">Interviews</a></li>
+          <li><a href="forums.html">Forums<span class="soon-chip">Soon</span></a></li>
+          <li><a href="community.html">Community Board<span class="soon-chip">Soon</span></a></li>
+        </ul>
+      </nav>
+      <div class="footer-contact">
+        <h2 class="footer-heading">Get involved</h2>
+        <p>Students, educators, and grads who want to help build this &mdash; reach out.</p>
+        <a href="mailto:hello@beaconafterbell.org">hello@beaconafterbell.org</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
       <p>&copy; 2026 Beacon After Bell &middot; Vancouver, BC</p>
     </div>
   </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
