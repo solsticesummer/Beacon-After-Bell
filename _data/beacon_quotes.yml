@@ -1,0 +1,33 @@
+# "Tonight's Beacon" — one pick shown per day, same for every visitor.
+# app.js selects picks[Math.floor(Date.now()/86400000) % picks.length],
+# so array ORDER is load-bearing: reordering changes which quote shows
+# on a given date. Append new quotes to the end; don't reorder existing
+# ones.
+- quote: "“Start the essays in the summer — writing under deadline made every sentence worse.”"
+  source: "What I Wish I Knew · Class of 2025"
+  href: "blog.html"
+  label: "Read more"
+- quote: "“Grade 11 course selection quietly decides which programs you can even apply to. Map it backwards from the program.”"
+  source: "Timelines · Grade 11"
+  href: "timelines.html#grade-11"
+  label: "See the Grade 11 timeline"
+- quote: "“My essay wasn’t about winning — it was about the season we lost and what I rebuilt after.”"
+  source: "Essay Vault · UBC Sauder"
+  href: "vault.html"
+  label: "Browse the vault"
+- quote: "“Ask one grad from your dream program how they got there. Worst case: you learn one new path.”"
+  source: "Interviews"
+  href: "interviews.html"
+  label: "Meet the grads"
+- quote: "“Clubs beat marks for learning who you are. Marks open the door; the rest of you walks through it.”"
+  source: "What I Wish I Knew · Class of 2024"
+  href: "blog.html"
+  label: "Read more"
+- quote: "“Grade 9 is for range: try the club you’re not sure about. Depth comes later.”"
+  source: "Timelines · Grade 9"
+  href: "timelines.html#grade-9"
+  label: "See the Grade 9 timeline"
+- quote: "“Scholarship deadlines cluster in the fall of Grade 12 — collect them in one calendar before school starts.”"
+  source: "Timelines · Grade 12"
+  href: "timelines.html#grade-12"
+  label: "See the Grade 12 timeline"

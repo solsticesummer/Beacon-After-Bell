@@ -128,7 +128,9 @@
 /* ---------- Tonight's Beacon: one archive pick per day ----------
    Date-seeded, so every visitor sees the same pick on the same day
    and a new one tomorrow — a daily-return hook with zero backend.
-   The HTML ships with the first pick as static fallback for no-JS. */
+   The HTML ships with the first pick as static fallback for no-JS.
+   Picks live in _data/beacon_quotes.yml and are injected as JSON by
+   _layouts/default.html — add a new pick there, not here. */
 (function initTonightsBeacon() {
   const quoteEl = document.getElementById('beacon-quote');
   if (!quoteEl) return;
@@ -136,50 +138,9 @@
   const sourceEl = document.getElementById('beacon-source');
   const linkEl = document.getElementById('beacon-link');
 
-  const picks = [
-    {
-      quote: '“Start the essays in the summer — writing under deadline made every sentence worse.”',
-      source: 'What I Wish I Knew · Class of 2025',
-      href: 'blog.html',
-      label: 'Read more',
-    },
-    {
-      quote: '“Grade 11 course selection quietly decides which programs you can even apply to. Map it backwards from the program.”',
-      source: 'Timelines · Grade 11',
-      href: 'timelines.html#grade-11',
-      label: 'See the Grade 11 timeline',
-    },
-    {
-      quote: '“My essay wasn’t about winning — it was about the season we lost and what I rebuilt after.”',
-      source: 'Essay Vault · UBC Sauder',
-      href: 'vault.html',
-      label: 'Browse the vault',
-    },
-    {
-      quote: '“Ask one grad from your dream program how they got there. Worst case: you learn one new path.”',
-      source: 'Interviews',
-      href: 'interviews.html',
-      label: 'Meet the grads',
-    },
-    {
-      quote: '“Clubs beat marks for learning who you are. Marks open the door; the rest of you walks through it.”',
-      source: 'What I Wish I Knew · Class of 2024',
-      href: 'blog.html',
-      label: 'Read more',
-    },
-    {
-      quote: '“Grade 9 is for range: try the club you’re not sure about. Depth comes later.”',
-      source: 'Timelines · Grade 9',
-      href: 'timelines.html#grade-9',
-      label: 'See the Grade 9 timeline',
-    },
-    {
-      quote: '“Scholarship deadlines cluster in the fall of Grade 12 — collect them in one calendar before school starts.”',
-      source: 'Timelines · Grade 12',
-      href: 'timelines.html#grade-12',
-      label: 'See the Grade 12 timeline',
-    },
-  ];
+  const dataEl = document.getElementById('beacon-quotes-data');
+  const picks = dataEl ? JSON.parse(dataEl.textContent) : [];
+  if (!picks.length) return;
 
   // Days since epoch → stable index for the whole day, new one at midnight.
   const day = Math.floor(Date.now() / 86400000);

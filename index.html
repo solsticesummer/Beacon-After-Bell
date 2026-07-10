@@ -136,11 +136,11 @@ og_description: "Application essays that worked, grade 9–12 timelines, and hon
     </div>
     <figure class="beacon-card">
       <blockquote id="beacon-quote">
-        &ldquo;Start the essays in the summer &mdash; writing under deadline made every sentence worse.&rdquo;
+        {{ site.data.beacon_quotes[0].quote }}
       </blockquote>
       <figcaption>
-        <span id="beacon-source">What I Wish I Knew · Class of 2025</span>
-        <a id="beacon-link" href="blog.html">Read more</a>
+        <span id="beacon-source">{{ site.data.beacon_quotes[0].source }}</span>
+        <a id="beacon-link" href="{{ site.data.beacon_quotes[0].href }}">{{ site.data.beacon_quotes[0].label }}</a>
       </figcaption>
     </figure>
   </div>
