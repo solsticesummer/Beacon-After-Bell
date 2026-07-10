@@ -1,117 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Common-Goal Forums · Beacon After Bell</title>
-  <meta name="description" content="Find students working toward the same programs, tests, and competitions — study groups and shared advice. Coming soon.">
-  <meta property="og:site_name" content="Beacon After Bell">
-  <meta property="og:title" content="Common-Goal Forums · Beacon After Bell">
-  <meta property="og:description" content="Find students working toward the same goals and form study groups — coming soon.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://solsticesummer.github.io/Beacon-After-Bell/forums.html">
-  <meta name="twitter:card" content="summary">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+---
+layout: default
+title: "Common-Goal Forums · Beacon After Bell"
+description: "Find students working toward the same programs, tests, and competitions — study groups and shared advice. Coming soon."
+og_description: "Find students working toward the same goals and form study groups — coming soon."
+hue: gold
+---
+<section class="page-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; Back to home</a>
+    <span class="coming-soon-badge">Coming Soon</span>
+    <h1>Common-Goal Forums</h1>
+    <hr class="spectrum-rule">
+    <p>Tag the programs, courses, and competitions you're working toward and find other students headed the same way &mdash; for study groups, advice, and shared resources.</p>
+  </div>
+</section>
 
-  <!-- SHARED:HEADER — keep in sync across all pages (see CLAUDE.md).
-       Allowed per-page diffs: aria-current="page" on the active link,
-       and #top/#contact anchors on index vs index.html#… here. -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo">
-        <img src="assets/logo.svg" alt="">
-        Beacon <span>After Bell</span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="vault.html">Vault</a>
-        <a href="timelines.html">Timelines</a>
-        <a href="blog.html">Blog</a>
-        <a href="interviews.html">Interviews</a>
-        <a href="index.html#contact" class="nav-cta">Get Involved</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="main" class="hue-gold">
-    <section class="page-hero">
-      <div class="container">
-        <a href="index.html" class="back-link">&larr; Back to home</a>
-        <span class="coming-soon-badge">Coming Soon</span>
-        <h1>Common-Goal Forums</h1>
-        <hr class="spectrum-rule">
-        <p>Tag the programs, courses, and competitions you're working toward and find other students headed the same way &mdash; for study groups, advice, and shared resources.</p>
+<section class="section">
+  <div class="container">
+    <h2>What's coming</h2>
+    <div class="cs-grid">
+      <div class="cs-panel">
+        <h3>Tag your goals</h3>
+        <p>Mark the programs, subjects, and ambitions you care about &mdash; from "UBC Sauder" to "USACO" to "pre-med" &mdash; and build a profile that finds your people.</p>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2>What's coming</h2>
-        <div class="cs-grid">
-          <div class="cs-panel">
-            <h3>Tag your goals</h3>
-            <p>Mark the programs, subjects, and ambitions you care about &mdash; from "UBC Sauder" to "USACO" to "pre-med" &mdash; and build a profile that finds your people.</p>
-          </div>
-          <div class="cs-panel">
-            <h3>Discover peers</h3>
-            <p>Get matched with students working toward the same goals, so you're not preparing alone.</p>
-          </div>
-          <div class="cs-panel">
-            <h3>Form study groups</h3>
-            <p>Spin up focused groups for a course, a competition, or an application season &mdash; and keep each other accountable.</p>
-          </div>
-          <div class="cs-panel">
-            <h3>Share experience</h3>
-            <p>Ask questions, trade resources, and learn from students a step ahead of you on the same path.</p>
-          </div>
-        </div>
-        <p class="vault-count">
-          Forums need accounts and moderation to be safe and useful, so we're building them carefully.
-          <a href="index.html#contact">Want early access or to help shape them?</a>
-        </p>
+      <div class="cs-panel">
+        <h3>Discover peers</h3>
+        <p>Get matched with students working toward the same goals, so you're not preparing alone.</p>
       </div>
-    </section>
-  </main>
-
-  <!-- SHARED:FOOTER — keep in sync across all pages (see CLAUDE.md).
-       Allowed per-page diff: index.html#contact here vs #contact on index. -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="assets/logo.svg" alt="">
-          Beacon <span>After Bell</span>
-        </a>
-        <p>A student-run non-profit in Vancouver, BC. Essays, timelines, and advice from students who've been there.</p>
+      <div class="cs-panel">
+        <h3>Form study groups</h3>
+        <p>Spin up focused groups for a course, a competition, or an application season &mdash; and keep each other accountable.</p>
       </div>
-      <nav class="footer-nav" aria-label="Explore">
-        <h2 class="footer-heading">Explore</h2>
-        <ul>
-          <li><a href="vault.html">Essay Vault</a></li>
-          <li><a href="timelines.html">Timelines</a></li>
-          <li><a href="blog.html">What I Wish I Knew</a></li>
-          <li><a href="interviews.html">Interviews</a></li>
-          <li><a href="forums.html">Forums<span class="soon-chip">Soon</span></a></li>
-          <li><a href="community.html">Community Board<span class="soon-chip">Soon</span></a></li>
-        </ul>
-      </nav>
-      <div class="footer-contact">
-        <h2 class="footer-heading">Get involved</h2>
-        <p>Students, educators, and grads who want to help build this &mdash; reach out.</p>
-        <a href="mailto:hello@beaconafterbell.org">hello@beaconafterbell.org</a>
+      <div class="cs-panel">
+        <h3>Share experience</h3>
+        <p>Ask questions, trade resources, and learn from students a step ahead of you on the same path.</p>
       </div>
     </div>
-    <div class="container footer-bottom">
-      <p>&copy; 2026 Beacon After Bell &middot; Vancouver, BC</p>
-    </div>
-  </footer>
-
-  <script src="app.js"></script>
-</body>
-</html>
+    <p class="vault-count">
+      Forums need accounts and moderation to be safe and useful, so we're building them carefully.
+      <a href="index.html#contact">Want early access or to help shape them?</a>
+    </p>
+  </div>
+</section>

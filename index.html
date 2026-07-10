@@ -1,260 +1,186 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beacon After Bell — Student-to-student guidance for grades 9–12</title>
-  <meta name="description" content="Beacon After Bell is a student-run non-profit in Vancouver. Application essays that worked, grade-by-grade timelines, and honest advice from students who've been there.">
-  <meta property="og:site_name" content="Beacon After Bell">
-  <meta property="og:title" content="Beacon After Bell — Student-to-student guidance for grades 9–12">
-  <meta property="og:description" content="Application essays that worked, grade 9–12 timelines, and honest answers from students one step ahead.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://solsticesummer.github.io/Beacon-After-Bell/">
-  <meta name="twitter:card" content="summary">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
-
-  <!-- SHARED:HEADER — keep in sync across all pages (see CLAUDE.md).
-       Allowed per-page diffs: aria-current="page" on the active link,
-       and #top/#contact anchors here vs index.html#… on interior pages. -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="#top" class="logo">
-        <img src="assets/logo.svg" alt="">
-        Beacon <span>After Bell</span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="vault.html">Vault</a>
-        <a href="timelines.html">Timelines</a>
-        <a href="blog.html">Blog</a>
-        <a href="interviews.html">Interviews</a>
-        <a href="#contact" class="nav-cta">Get Involved</a>
-      </nav>
+---
+layout: default
+title: "Beacon After Bell — Student-to-student guidance for grades 9–12"
+description: "Beacon After Bell is a student-run non-profit in Vancouver. Application essays that worked, grade-by-grade timelines, and honest advice from students who've been there."
+og_description: "Application essays that worked, grade 9–12 timelines, and honest answers from students one step ahead."
+---
+<section id="top" class="hero">
+  <div class="container">
+    <div class="hero-copy">
+      <p class="eyebrow">Vancouver, BC · Student-Founded Non-Profit</p>
+      <h1>Advice from students who've been there.</h1>
+      <p class="hero-sub">
+        Application essays, grade-by-grade timelines, and practical answers to the
+        questions every high school student has.
+      </p>
+      <div class="hero-actions">
+        <a href="vault.html" class="btn btn-primary">Browse the Essay Vault</a>
+        <a href="#contact" class="btn btn-secondary">Get involved</a>
+      </div>
     </div>
-  </header>
+    <div class="prism-fan" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i>
+    </div>
+  </div>
+</section>
 
-  <main id="main">
-    <section id="top" class="hero">
-      <div class="container">
-        <div class="hero-copy">
-          <p class="eyebrow">Vancouver, BC · Student-Founded Non-Profit</p>
-          <h1>Advice from students who've been there.</h1>
-          <p class="hero-sub">
-            Application essays, grade-by-grade timelines, and practical answers to the
-            questions every high school student has.
-          </p>
-          <div class="hero-actions">
-            <a href="vault.html" class="btn btn-primary">Browse the Essay Vault</a>
-            <a href="#contact" class="btn btn-secondary">Get involved</a>
-          </div>
-        </div>
-        <div class="prism-fan" aria-hidden="true">
-          <i></i><i></i><i></i><i></i><i></i>
-        </div>
+<section class="section grade-band" aria-labelledby="grade-heading">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 id="grade-heading">Start where you are</h2>
+        <hr class="spectrum-rule">
       </div>
-    </section>
-
-    <section class="section grade-band" aria-labelledby="grade-heading">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2 id="grade-heading">Start where you are</h2>
-            <hr class="spectrum-rule">
-          </div>
-          <p class="section-lede">
-            Every grade has its own milestones. Jump straight to yours.
-          </p>
-        </div>
-        <ul class="grade-strip">
-          <li>
-            <a class="grade-chip hue-cyan" href="timelines.html#grade-9">
-              <span class="grade-num">Grade 9</span>
-              <span class="grade-label">Explore widely, build habits</span>
-            </a>
-          </li>
-          <li>
-            <a class="grade-chip hue-violet" href="timelines.html#grade-10">
-              <span class="grade-num">Grade 10</span>
-              <span class="grade-label">Find your stream</span>
-            </a>
-          </li>
-          <li>
-            <a class="grade-chip hue-magenta" href="timelines.html#grade-11">
-              <span class="grade-num">Grade 11</span>
-              <span class="grade-label">The push: APs, SAT, leadership</span>
-            </a>
-          </li>
-          <li>
-            <a class="grade-chip hue-gold" href="timelines.html#grade-12">
-              <span class="grade-num">Grade 12</span>
-              <span class="grade-label">Applications &amp; launch</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="living-archive" class="section section-alt">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>The Living Archive</h2>
-            <hr class="spectrum-rule">
-          </div>
-          <p class="section-lede">
-            Essays, timelines, reflections, and wins &mdash; everything students here
-            have shared so far.
-          </p>
-        </div>
-
-        <div class="archive-layout">
-          <a class="archive-lead hue-violet" href="vault.html">
-            <p class="card-eyebrow">Living Archive</p>
-            <h3>Essay Vault</h3>
-            <p>A searchable database of successful college application essays, tagged by university and program.</p>
-            <div class="tag-row">
-              <span class="essay-tag">UBC Sauder</span>
-              <span class="essay-tag">Engineering</span>
-              <span class="essay-tag">Life Sciences</span>
-              <span class="essay-tag">Computer Science</span>
-            </div>
-            <p class="pull-quote">&ldquo;I opened with the robot that failed, not the trophy &mdash; and wrote about what I rebuilt.&rdquo;</p>
-            <p>Every essay is shared by the student who wrote it, so you see what actually worked &mdash; not a template.</p>
-            <span class="card-link">Browse the vault</span>
-          </a>
-
-          <div class="archive-list">
-            <a class="archive-row hue-cyan" href="timelines.html">
-              <p class="card-eyebrow">Grades 9&ndash;12</p>
-              <h3>Interactive Timelines</h3>
-              <p>Milestones and recommended steps, laid out grade by grade toward university.</p>
-              <ul class="mini-steps">
-                <li class="active">9</li>
-                <li>10</li>
-                <li>11</li>
-                <li>12</li>
-              </ul>
-              <span class="card-link">See the full path</span>
-            </a>
-
-            <a class="archive-row hue-coral" href="blog.html">
-              <p class="card-eyebrow">FAQ &amp; Blog</p>
-              <h3>What I Wish I Knew</h3>
-              <p class="pull-quote">&ldquo;Start the essays in the summer &mdash; writing under deadline made every sentence worse.&rdquo;</p>
-              <span class="card-link">Read more</span>
-            </a>
-
-            <a class="archive-row hue-gold" href="community.html">
-              <p class="card-eyebrow">Community Board · Coming Soon</p>
-              <h3>Success Wall</h3>
-              <p class="wall-chip">🎉 Accepted &mdash; UBC Sauder</p>
-              <span class="card-link">Celebrate a win</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="tonight" class="section" aria-labelledby="tonight-heading">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2 id="tonight-heading">Tonight's Beacon</h2>
-            <hr class="spectrum-rule">
-          </div>
-          <p class="section-lede">One pick from the archive, every day.</p>
-        </div>
-        <figure class="beacon-card">
-          <blockquote id="beacon-quote">
-            &ldquo;Start the essays in the summer &mdash; writing under deadline made every sentence worse.&rdquo;
-          </blockquote>
-          <figcaption>
-            <span id="beacon-source">What I Wish I Knew · Class of 2025</span>
-            <a id="beacon-link" href="blog.html">Read more</a>
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="features" class="section section-alt">
-      <div class="container">
-        <div class="section-head">
-          <div>
-            <h2>Also on Beacon</h2>
-            <hr class="spectrum-rule">
-          </div>
-        </div>
-        <div class="feature-grid">
-          <a class="feature-card hue-magenta" href="interviews.html">
-            <span class="feature-index">01</span>
-            <h3>Monthly Interviews</h3>
-            <p>Students and recent grads on how they got where they are &mdash; the wins, the detours, and what they'd do differently.</p>
-          </a>
-          <a class="feature-card hue-gold" href="forums.html">
-            <span class="feature-index">02</span>
-            <h3>Common-Goal Forums</h3>
-            <p>Find other students working toward the same program, test, or competition &mdash; study groups and shared advice. Coming soon.</p>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="section section-cta">
-      <div class="container">
-        <h2>Get Involved</h2>
-        <p class="section-lede">
-          Everything here comes from students and recent grads &mdash; the essays they
-          submitted, the schedules they followed, the mistakes they'd avoid. We publish it
-          so the next student doesn't have to figure it out from scratch.
-        </p>
-        <p>
-          Beacon After Bell is just getting started. If you're a student, educator, or graduate
-          who wants to help build this, we'd love to hear from you.
-        </p>
-        <a href="mailto:hello@beaconafterbell.org" class="btn btn-primary">Contact Us</a>
-      </div>
-    </section>
-  </main>
-
-  <!-- SHARED:FOOTER — keep in sync across all pages (see CLAUDE.md).
-       Allowed per-page diff: #contact here vs index.html#contact on interior pages. -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="#top" class="logo">
-          <img src="assets/logo.svg" alt="">
-          Beacon <span>After Bell</span>
+      <p class="section-lede">
+        Every grade has its own milestones. Jump straight to yours.
+      </p>
+    </div>
+    <ul class="grade-strip">
+      <li>
+        <a class="grade-chip hue-cyan" href="timelines.html#grade-9">
+          <span class="grade-num">Grade 9</span>
+          <span class="grade-label">Explore widely, build habits</span>
         </a>
-        <p>A student-run non-profit in Vancouver, BC. Essays, timelines, and advice from students who've been there.</p>
-      </div>
-      <nav class="footer-nav" aria-label="Explore">
-        <h2 class="footer-heading">Explore</h2>
-        <ul>
-          <li><a href="vault.html">Essay Vault</a></li>
-          <li><a href="timelines.html">Timelines</a></li>
-          <li><a href="blog.html">What I Wish I Knew</a></li>
-          <li><a href="interviews.html">Interviews</a></li>
-          <li><a href="forums.html">Forums<span class="soon-chip">Soon</span></a></li>
-          <li><a href="community.html">Community Board<span class="soon-chip">Soon</span></a></li>
-        </ul>
-      </nav>
-      <div class="footer-contact">
-        <h2 class="footer-heading">Get involved</h2>
-        <p>Students, educators, and grads who want to help build this &mdash; reach out.</p>
-        <a href="mailto:hello@beaconafterbell.org">hello@beaconafterbell.org</a>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>&copy; 2026 Beacon After Bell &middot; Vancouver, BC</p>
-    </div>
-  </footer>
+      </li>
+      <li>
+        <a class="grade-chip hue-violet" href="timelines.html#grade-10">
+          <span class="grade-num">Grade 10</span>
+          <span class="grade-label">Find your stream</span>
+        </a>
+      </li>
+      <li>
+        <a class="grade-chip hue-magenta" href="timelines.html#grade-11">
+          <span class="grade-num">Grade 11</span>
+          <span class="grade-label">The push: APs, SAT, leadership</span>
+        </a>
+      </li>
+      <li>
+        <a class="grade-chip hue-gold" href="timelines.html#grade-12">
+          <span class="grade-num">Grade 12</span>
+          <span class="grade-label">Applications &amp; launch</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
 
-  <script src="app.js"></script>
-</body>
-</html>
+<section id="living-archive" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>The Living Archive</h2>
+        <hr class="spectrum-rule">
+      </div>
+      <p class="section-lede">
+        Essays, timelines, reflections, and wins &mdash; everything students here
+        have shared so far.
+      </p>
+    </div>
+
+    <div class="archive-layout">
+      <a class="archive-lead hue-violet" href="vault.html">
+        <p class="card-eyebrow">Living Archive</p>
+        <h3>Essay Vault</h3>
+        <p>A searchable database of successful college application essays, tagged by university and program.</p>
+        <div class="tag-row">
+          <span class="essay-tag">UBC Sauder</span>
+          <span class="essay-tag">Engineering</span>
+          <span class="essay-tag">Life Sciences</span>
+          <span class="essay-tag">Computer Science</span>
+        </div>
+        <p class="pull-quote">&ldquo;I opened with the robot that failed, not the trophy &mdash; and wrote about what I rebuilt.&rdquo;</p>
+        <p>Every essay is shared by the student who wrote it, so you see what actually worked &mdash; not a template.</p>
+        <span class="card-link">Browse the vault</span>
+      </a>
+
+      <div class="archive-list">
+        <a class="archive-row hue-cyan" href="timelines.html">
+          <p class="card-eyebrow">Grades 9&ndash;12</p>
+          <h3>Interactive Timelines</h3>
+          <p>Milestones and recommended steps, laid out grade by grade toward university.</p>
+          <ul class="mini-steps">
+            <li class="active">9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+          </ul>
+          <span class="card-link">See the full path</span>
+        </a>
+
+        <a class="archive-row hue-coral" href="blog.html">
+          <p class="card-eyebrow">FAQ &amp; Blog</p>
+          <h3>What I Wish I Knew</h3>
+          <p class="pull-quote">&ldquo;Start the essays in the summer &mdash; writing under deadline made every sentence worse.&rdquo;</p>
+          <span class="card-link">Read more</span>
+        </a>
+
+        <a class="archive-row hue-gold" href="community.html">
+          <p class="card-eyebrow">Community Board · Coming Soon</p>
+          <h3>Success Wall</h3>
+          <p class="wall-chip">🎉 Accepted &mdash; UBC Sauder</p>
+          <span class="card-link">Celebrate a win</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tonight" class="section" aria-labelledby="tonight-heading">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2 id="tonight-heading">Tonight's Beacon</h2>
+        <hr class="spectrum-rule">
+      </div>
+      <p class="section-lede">One pick from the archive, every day.</p>
+    </div>
+    <figure class="beacon-card">
+      <blockquote id="beacon-quote">
+        &ldquo;Start the essays in the summer &mdash; writing under deadline made every sentence worse.&rdquo;
+      </blockquote>
+      <figcaption>
+        <span id="beacon-source">What I Wish I Knew · Class of 2025</span>
+        <a id="beacon-link" href="blog.html">Read more</a>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="features" class="section section-alt">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Also on Beacon</h2>
+        <hr class="spectrum-rule">
+      </div>
+    </div>
+    <div class="feature-grid">
+      <a class="feature-card hue-magenta" href="interviews.html">
+        <span class="feature-index">01</span>
+        <h3>Monthly Interviews</h3>
+        <p>Students and recent grads on how they got where they are &mdash; the wins, the detours, and what they'd do differently.</p>
+      </a>
+      <a class="feature-card hue-gold" href="forums.html">
+        <span class="feature-index">02</span>
+        <h3>Common-Goal Forums</h3>
+        <p>Find other students working toward the same program, test, or competition &mdash; study groups and shared advice. Coming soon.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="section section-cta">
+  <div class="container">
+    <h2>Get Involved</h2>
+    <p class="section-lede">
+      Everything here comes from students and recent grads &mdash; the essays they
+      submitted, the schedules they followed, the mistakes they'd avoid. We publish it
+      so the next student doesn't have to figure it out from scratch.
+    </p>
+    <p>
+      Beacon After Bell is just getting started. If you're a student, educator, or graduate
+      who wants to help build this, we'd love to hear from you.
+    </p>
+    <a href="mailto:hello@beaconafterbell.org" class="btn btn-primary">Contact Us</a>
+  </div>
+</section>

@@ -1,0 +1,20 @@
+title: "Beacon After Bell"
+description: "Beacon After Bell is a student-run non-profit in Vancouver. Application essays that worked, grade-by-grade timelines, and honest advice from students who've been there."
+url: "https://solsticesummer.github.io"
+baseurl: "/Beacon-After-Bell"
+
+collections:
+  essays:
+    output: false
+  interviews:
+    output: false
+
+markdown: kramdown
+
+exclude:
+  - README.md
+  - CLAUDE.md
+  - docs
+  - scripts
+  - Gemfile
+  - Gemfile.lock

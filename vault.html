@@ -1,181 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Essay Vault · Beacon After Bell</title>
-  <meta name="description" content="A searchable database of successful college application essays, categorized by university, program, and school.">
-  <meta property="og:site_name" content="Beacon After Bell">
-  <meta property="og:title" content="Essay Vault · Beacon After Bell">
-  <meta property="og:description" content="Successful college application essays, searchable by university and program — shared by the students who wrote them.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://solsticesummer.github.io/Beacon-After-Bell/vault.html">
-  <meta name="twitter:card" content="summary">
-  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <a class="skip-link" href="#main">Skip to content</a>
+---
+layout: default
+title: "Essay Vault · Beacon After Bell"
+description: "A searchable database of successful college application essays, categorized by university, program, and school."
+og_description: "Successful college application essays, searchable by university and program — shared by the students who wrote them."
+nav_id: vault
+hue: violet
+---
+<section class="page-hero">
+  <div class="container">
+    <a href="index.html" class="back-link">&larr; Back to home</a>
+    <p class="eyebrow">Living Archive</p>
+    <h1>The Vault</h1>
+    <hr class="spectrum-rule">
+    <p>A searchable database of successful college application essays &mdash; categorized by university, program, and school &mdash; so you can learn from the students who came before you.</p>
+  </div>
+</section>
 
-  <!-- SHARED:HEADER — keep in sync across all pages (see CLAUDE.md).
-       Allowed per-page diffs: aria-current="page" on the active link,
-       and #top/#contact anchors on index vs index.html#… here. -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <a href="index.html" class="logo">
-        <img src="assets/logo.svg" alt="">
-        Beacon <span>After Bell</span>
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <a href="vault.html" aria-current="page">Vault</a>
-        <a href="timelines.html">Timelines</a>
-        <a href="blog.html">Blog</a>
-        <a href="interviews.html">Interviews</a>
-        <a href="index.html#contact" class="nav-cta">Get Involved</a>
-      </nav>
+<section class="section">
+  <div class="container">
+    <div class="vault-controls">
+      <input type="search" id="vault-search" placeholder="Search essays, prompts, keywords&hellip;" aria-label="Search essays">
+      <select id="filter-university" aria-label="Filter by university">
+        <option value="">All universities</option>
+        <option value="UBC">UBC</option>
+        <option value="University of Toronto">University of Toronto</option>
+        <option value="McGill">McGill</option>
+        <option value="Waterloo">Waterloo</option>
+        <option value="Stanford">Stanford</option>
+        <option value="MIT">MIT</option>
+      </select>
+      <select id="filter-program" aria-label="Filter by program">
+        <option value="">All programs</option>
+        <option value="Engineering">Engineering</option>
+        <option value="Computer Science">Computer Science</option>
+        <option value="Life Sciences">Life Sciences</option>
+        <option value="Business">Business</option>
+        <option value="Arts">Arts</option>
+      </select>
     </div>
-  </header>
 
-  <!-- hue-violet on <main> scopes every accent on this page (eyebrow,
-       tags, focus tints, links) to the Vault's spectrum color. -->
-  <main id="main" class="hue-violet">
-    <section class="page-hero">
-      <div class="container">
-        <a href="index.html" class="back-link">&larr; Back to home</a>
-        <p class="eyebrow">Living Archive</p>
-        <h1>The Vault</h1>
-        <hr class="spectrum-rule">
-        <p>A searchable database of successful college application essays &mdash; categorized by university, program, and school &mdash; so you can learn from the students who came before you.</p>
-      </div>
-    </section>
+    <!-- aria-live: filter results are announced to screen readers
+         without moving focus away from the search box. -->
+    <p class="vault-count" id="vault-count" aria-live="polite"></p>
 
-    <section class="section">
-      <div class="container">
-        <div class="vault-controls">
-          <input type="search" id="vault-search" placeholder="Search essays, prompts, keywords&hellip;" aria-label="Search essays">
-          <select id="filter-university" aria-label="Filter by university">
-            <option value="">All universities</option>
-            <option value="UBC">UBC</option>
-            <option value="University of Toronto">University of Toronto</option>
-            <option value="McGill">McGill</option>
-            <option value="Waterloo">Waterloo</option>
-            <option value="Stanford">Stanford</option>
-            <option value="MIT">MIT</option>
-          </select>
-          <select id="filter-program" aria-label="Filter by program">
-            <option value="">All programs</option>
-            <option value="Engineering">Engineering</option>
-            <option value="Computer Science">Computer Science</option>
-            <option value="Life Sciences">Life Sciences</option>
-            <option value="Business">Business</option>
-            <option value="Arts">Arts</option>
-          </select>
-        </div>
-
-        <!-- aria-live: filter results are announced to screen readers
-             without moving focus away from the search box. -->
-        <p class="vault-count" id="vault-count" aria-live="polite"></p>
-
-        <div class="vault-grid" id="vault-grid">
-          <article class="essay-card" data-university="UBC" data-program="Engineering" data-school="Lord Byng Secondary">
-            <div class="tag-row"><span class="essay-tag">UBC</span><span class="essay-tag">Engineering</span></div>
-            <h3>"The bridge I never finished building"</h3>
-            <p>A personal-profile essay on resilience, told through a failed robotics project that taught more than any success.</p>
-            <span class="sample-flag">Sample entry</span>
-          </article>
-          <article class="essay-card" data-university="University of Toronto" data-program="Life Sciences" data-school="Marc Garneau CI">
-            <div class="tag-row"><span class="essay-tag">U of T</span><span class="essay-tag">Life Sciences</span></div>
-            <h3>"Why medicine, after the ER waiting room"</h3>
-            <p>A supplementary essay linking a family emergency to a genuine, specific interest in public health.</p>
-            <span class="sample-flag">Sample entry</span>
-          </article>
-          <article class="essay-card" data-university="Waterloo" data-program="Computer Science" data-school="Sir Winston Churchill">
-            <div class="tag-row"><span class="essay-tag">Waterloo</span><span class="essay-tag">Computer Science</span></div>
-            <h3>AIF: building tools nobody asked for</h3>
-            <p>An Admission Information Form response on self-directed projects and what shipping a real app taught about failure.</p>
-            <span class="sample-flag">Sample entry</span>
-          </article>
-          <article class="essay-card" data-university="McGill" data-program="Arts" data-school="West Point Grey Academy">
-            <div class="tag-row"><span class="essay-tag">McGill</span><span class="essay-tag">Arts</span></div>
-            <h3>"Two languages, one voice"</h3>
-            <p>A reflection on growing up bilingual and how translation became a lens for understanding people.</p>
-            <span class="sample-flag">Sample entry</span>
-          </article>
-          <article class="essay-card" data-university="Stanford" data-program="Computer Science" data-school="University Hill Secondary">
-            <div class="tag-row"><span class="essay-tag">Stanford</span><span class="essay-tag">Computer Science</span></div>
-            <h3>"What matters to me and why"</h3>
-            <p>A short-answer supplement on open-source contribution as a form of community, not competition.</p>
-            <span class="sample-flag">Sample entry</span>
-          </article>
-          <article class="essay-card" data-university="MIT" data-program="Engineering" data-school="David Thompson Secondary">
-            <div class="tag-row"><span class="essay-tag">MIT</span><span class="essay-tag">Engineering</span></div>
-            <h3>"The pleasure of a hard problem"</h3>
-            <p>A maker-profile essay on tinkering with electronics and the joy of debugging at 2 a.m.</p>
-            <span class="sample-flag">Sample entry</span>
-          </article>
-          <article class="essay-card" data-university="University of Toronto" data-program="Business" data-school="Point Grey Secondary">
-            <div class="tag-row"><span class="essay-tag">U of T</span><span class="essay-tag">Business</span></div>
-            <h3>Rotman: the lemonade-stand ledger</h3>
-            <p>A video-essay transcript on running a small resale business and learning that trust scales slower than revenue.</p>
-            <span class="sample-flag">Sample entry</span>
-          </article>
-          <article class="essay-card" data-university="UBC" data-program="Life Sciences" data-school="Eric Hamber Secondary">
-            <div class="tag-row"><span class="essay-tag">UBC</span><span class="essay-tag">Life Sciences</span></div>
-            <h3>"The garden that taught me systems"</h3>
-            <p>A personal-profile essay connecting a community garden to an interest in ecology and collective care.</p>
-            <span class="sample-flag">Sample entry</span>
-          </article>
-        </div>
-
-        <p class="no-results" id="no-results" hidden>
-          No essays match those filters yet.
-          <button type="button" id="clear-filters">Clear the search and filters</button>
-        </p>
-
-        <p class="vault-count mt-lg">
-          These are illustrative samples. The full Vault &mdash; with real, contributed essays and moderation &mdash; is being built.
-          <a href="index.html#contact">Want to contribute yours?</a>
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <!-- SHARED:FOOTER — keep in sync across all pages (see CLAUDE.md).
-       Allowed per-page diff: index.html#contact here vs #contact on index. -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">
-          <img src="assets/logo.svg" alt="">
-          Beacon <span>After Bell</span>
-        </a>
-        <p>A student-run non-profit in Vancouver, BC. Essays, timelines, and advice from students who've been there.</p>
-      </div>
-      <nav class="footer-nav" aria-label="Explore">
-        <h2 class="footer-heading">Explore</h2>
-        <ul>
-          <li><a href="vault.html">Essay Vault</a></li>
-          <li><a href="timelines.html">Timelines</a></li>
-          <li><a href="blog.html">What I Wish I Knew</a></li>
-          <li><a href="interviews.html">Interviews</a></li>
-          <li><a href="forums.html">Forums<span class="soon-chip">Soon</span></a></li>
-          <li><a href="community.html">Community Board<span class="soon-chip">Soon</span></a></li>
-        </ul>
-      </nav>
-      <div class="footer-contact">
-        <h2 class="footer-heading">Get involved</h2>
-        <p>Students, educators, and grads who want to help build this &mdash; reach out.</p>
-        <a href="mailto:hello@beaconafterbell.org">hello@beaconafterbell.org</a>
-      </div>
+    <div class="vault-grid" id="vault-grid">
+      <article class="essay-card" data-university="UBC" data-program="Engineering" data-school="Lord Byng Secondary">
+        <div class="tag-row"><span class="essay-tag">UBC</span><span class="essay-tag">Engineering</span></div>
+        <h3>"The bridge I never finished building"</h3>
+        <p>A personal-profile essay on resilience, told through a failed robotics project that taught more than any success.</p>
+        <span class="sample-flag">Sample entry</span>
+      </article>
+      <article class="essay-card" data-university="University of Toronto" data-program="Life Sciences" data-school="Marc Garneau CI">
+        <div class="tag-row"><span class="essay-tag">U of T</span><span class="essay-tag">Life Sciences</span></div>
+        <h3>"Why medicine, after the ER waiting room"</h3>
+        <p>A supplementary essay linking a family emergency to a genuine, specific interest in public health.</p>
+        <span class="sample-flag">Sample entry</span>
+      </article>
+      <article class="essay-card" data-university="Waterloo" data-program="Computer Science" data-school="Sir Winston Churchill">
+        <div class="tag-row"><span class="essay-tag">Waterloo</span><span class="essay-tag">Computer Science</span></div>
+        <h3>AIF: building tools nobody asked for</h3>
+        <p>An Admission Information Form response on self-directed projects and what shipping a real app taught about failure.</p>
+        <span class="sample-flag">Sample entry</span>
+      </article>
+      <article class="essay-card" data-university="McGill" data-program="Arts" data-school="West Point Grey Academy">
+        <div class="tag-row"><span class="essay-tag">McGill</span><span class="essay-tag">Arts</span></div>
+        <h3>"Two languages, one voice"</h3>
+        <p>A reflection on growing up bilingual and how translation became a lens for understanding people.</p>
+        <span class="sample-flag">Sample entry</span>
+      </article>
+      <article class="essay-card" data-university="Stanford" data-program="Computer Science" data-school="University Hill Secondary">
+        <div class="tag-row"><span class="essay-tag">Stanford</span><span class="essay-tag">Computer Science</span></div>
+        <h3>"What matters to me and why"</h3>
+        <p>A short-answer supplement on open-source contribution as a form of community, not competition.</p>
+        <span class="sample-flag">Sample entry</span>
+      </article>
+      <article class="essay-card" data-university="MIT" data-program="Engineering" data-school="David Thompson Secondary">
+        <div class="tag-row"><span class="essay-tag">MIT</span><span class="essay-tag">Engineering</span></div>
+        <h3>"The pleasure of a hard problem"</h3>
+        <p>A maker-profile essay on tinkering with electronics and the joy of debugging at 2 a.m.</p>
+        <span class="sample-flag">Sample entry</span>
+      </article>
+      <article class="essay-card" data-university="University of Toronto" data-program="Business" data-school="Point Grey Secondary">
+        <div class="tag-row"><span class="essay-tag">U of T</span><span class="essay-tag">Business</span></div>
+        <h3>Rotman: the lemonade-stand ledger</h3>
+        <p>A video-essay transcript on running a small resale business and learning that trust scales slower than revenue.</p>
+        <span class="sample-flag">Sample entry</span>
+      </article>
+      <article class="essay-card" data-university="UBC" data-program="Life Sciences" data-school="Eric Hamber Secondary">
+        <div class="tag-row"><span class="essay-tag">UBC</span><span class="essay-tag">Life Sciences</span></div>
+        <h3>"The garden that taught me systems"</h3>
+        <p>A personal-profile essay connecting a community garden to an interest in ecology and collective care.</p>
+        <span class="sample-flag">Sample entry</span>
+      </article>
     </div>
-    <div class="container footer-bottom">
-      <p>&copy; 2026 Beacon After Bell &middot; Vancouver, BC</p>
-    </div>
-  </footer>
 
-  <script src="app.js"></script>
-</body>
-</html>
+    <p class="no-results" id="no-results" hidden>
+      No essays match those filters yet.
+      <button type="button" id="clear-filters">Clear the search and filters</button>
+    </p>
+
+    <p class="vault-count mt-lg">
+      These are illustrative samples. The full Vault &mdash; with real, contributed essays and moderation &mdash; is being built.
+      <a href="index.html#contact">Want to contribute yours?</a>
+    </p>
+  </div>
+</section>
