@@ -20,30 +20,10 @@ hue: magenta
   <div class="container">
     <h2>Featured conversations</h2>
     <div class="interview-grid">
-      <article class="interview-card">
-        <div class="avatar" aria-hidden="true">AR</div>
-        <h3>Aisha R.</h3>
-        <p class="role">Graduate &middot; UBC Engineering</p>
-        <blockquote>"I almost didn't apply to engineering because I failed physics in Grade 10. The recovery mattered more than the mark."</blockquote>
-      </article>
-      <article class="interview-card">
-        <div class="avatar" aria-hidden="true">DL</div>
-        <h3>Daniel L.</h3>
-        <p class="role">2nd year &middot; Waterloo CS</p>
-        <blockquote>"Co-op wasn't on my radar in high school. If I'd known how it worked, I'd have built a portfolio way earlier."</blockquote>
-      </article>
-      <article class="interview-card">
-        <div class="avatar" aria-hidden="true">MK</div>
-        <h3>Mei K.</h3>
-        <p class="role">Graduate &middot; McGill Life Sciences</p>
-        <blockquote>"Volunteering at a clinic taught me more about wanting medicine than any class ever did."</blockquote>
-      </article>
-      <article class="interview-card">
-        <div class="avatar" aria-hidden="true">JT</div>
-        <h3>Jordan T.</h3>
-        <p class="role">1st year &middot; U of T Rotman</p>
-        <blockquote>"Running a tiny resale business in Grade 11 became the story that got me in. Start something small and real."</blockquote>
-      </article>
+      {% assign interviews = site.interviews | sort: "order" %}
+      {% for interview in interviews %}
+        {% include interview-card.html interview=interview %}
+      {% endfor %}
     </div>
 
     <p class="vault-count mt-lg">
