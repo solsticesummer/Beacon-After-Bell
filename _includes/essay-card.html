@@ -1,0 +1,6 @@
+<article class="essay-card" data-university="{{ include.essay.university }}" data-program="{{ include.essay.program }}" data-school="{{ include.essay.school }}">
+  <div class="tag-row"><span class="essay-tag">{{ include.essay.university_tag | default: include.essay.university }}</span><span class="essay-tag">{{ include.essay.program }}</span></div>
+  <h3>{{ include.essay.title }}</h3>
+  <p>{{ include.essay.summary }}</p>
+  {% if include.essay.sample %}<span class="sample-flag">Sample entry</span>{% endif %}
+</article>

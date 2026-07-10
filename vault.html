@@ -22,20 +22,15 @@ hue: violet
       <input type="search" id="vault-search" placeholder="Search essays, prompts, keywords&hellip;" aria-label="Search essays">
       <select id="filter-university" aria-label="Filter by university">
         <option value="">All universities</option>
-        <option value="UBC">UBC</option>
-        <option value="University of Toronto">University of Toronto</option>
-        <option value="McGill">McGill</option>
-        <option value="Waterloo">Waterloo</option>
-        <option value="Stanford">Stanford</option>
-        <option value="MIT">MIT</option>
+        {% assign universities = site.essays | map: "university" | uniq | sort %}
+        {% for u in universities %}<option value="{{ u }}">{{ u }}</option>
+        {% endfor %}
       </select>
       <select id="filter-program" aria-label="Filter by program">
         <option value="">All programs</option>
-        <option value="Engineering">Engineering</option>
-        <option value="Computer Science">Computer Science</option>
-        <option value="Life Sciences">Life Sciences</option>
-        <option value="Business">Business</option>
-        <option value="Arts">Arts</option>
+        {% assign programs = site.essays | map: "program" | uniq | sort %}
+        {% for p in programs %}<option value="{{ p }}">{{ p }}</option>
+        {% endfor %}
       </select>
     </div>
 
@@ -44,54 +39,10 @@ hue: violet
     <p class="vault-count" id="vault-count" aria-live="polite"></p>
 
     <div class="vault-grid" id="vault-grid">
-      <article class="essay-card" data-university="UBC" data-program="Engineering" data-school="Lord Byng Secondary">
-        <div class="tag-row"><span class="essay-tag">UBC</span><span class="essay-tag">Engineering</span></div>
-        <h3>"The bridge I never finished building"</h3>
-        <p>A personal-profile essay on resilience, told through a failed robotics project that taught more than any success.</p>
-        <span class="sample-flag">Sample entry</span>
-      </article>
-      <article class="essay-card" data-university="University of Toronto" data-program="Life Sciences" data-school="Marc Garneau CI">
-        <div class="tag-row"><span class="essay-tag">U of T</span><span class="essay-tag">Life Sciences</span></div>
-        <h3>"Why medicine, after the ER waiting room"</h3>
-        <p>A supplementary essay linking a family emergency to a genuine, specific interest in public health.</p>
-        <span class="sample-flag">Sample entry</span>
-      </article>
-      <article class="essay-card" data-university="Waterloo" data-program="Computer Science" data-school="Sir Winston Churchill">
-        <div class="tag-row"><span class="essay-tag">Waterloo</span><span class="essay-tag">Computer Science</span></div>
-        <h3>AIF: building tools nobody asked for</h3>
-        <p>An Admission Information Form response on self-directed projects and what shipping a real app taught about failure.</p>
-        <span class="sample-flag">Sample entry</span>
-      </article>
-      <article class="essay-card" data-university="McGill" data-program="Arts" data-school="West Point Grey Academy">
-        <div class="tag-row"><span class="essay-tag">McGill</span><span class="essay-tag">Arts</span></div>
-        <h3>"Two languages, one voice"</h3>
-        <p>A reflection on growing up bilingual and how translation became a lens for understanding people.</p>
-        <span class="sample-flag">Sample entry</span>
-      </article>
-      <article class="essay-card" data-university="Stanford" data-program="Computer Science" data-school="University Hill Secondary">
-        <div class="tag-row"><span class="essay-tag">Stanford</span><span class="essay-tag">Computer Science</span></div>
-        <h3>"What matters to me and why"</h3>
-        <p>A short-answer supplement on open-source contribution as a form of community, not competition.</p>
-        <span class="sample-flag">Sample entry</span>
-      </article>
-      <article class="essay-card" data-university="MIT" data-program="Engineering" data-school="David Thompson Secondary">
-        <div class="tag-row"><span class="essay-tag">MIT</span><span class="essay-tag">Engineering</span></div>
-        <h3>"The pleasure of a hard problem"</h3>
-        <p>A maker-profile essay on tinkering with electronics and the joy of debugging at 2 a.m.</p>
-        <span class="sample-flag">Sample entry</span>
-      </article>
-      <article class="essay-card" data-university="University of Toronto" data-program="Business" data-school="Point Grey Secondary">
-        <div class="tag-row"><span class="essay-tag">U of T</span><span class="essay-tag">Business</span></div>
-        <h3>Rotman: the lemonade-stand ledger</h3>
-        <p>A video-essay transcript on running a small resale business and learning that trust scales slower than revenue.</p>
-        <span class="sample-flag">Sample entry</span>
-      </article>
-      <article class="essay-card" data-university="UBC" data-program="Life Sciences" data-school="Eric Hamber Secondary">
-        <div class="tag-row"><span class="essay-tag">UBC</span><span class="essay-tag">Life Sciences</span></div>
-        <h3>"The garden that taught me systems"</h3>
-        <p>A personal-profile essay connecting a community garden to an interest in ecology and collective care.</p>
-        <span class="sample-flag">Sample entry</span>
-      </article>
+      {% assign essays = site.essays | sort: "order" %}
+      {% for essay in essays %}
+        {% include essay-card.html essay=essay %}
+      {% endfor %}
     </div>
 
     <p class="no-results" id="no-results" hidden>

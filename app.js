@@ -8,7 +8,13 @@
 // CSS classes. The accessible state and the visible state are the
 // same piece of data, so they can never disagree.
 
-/* ---------- Vault: live filtering ---------- */
+/* ---------- Vault: live filtering ----------
+   Full DOM re-scan per keystroke, deliberately not debounced/indexed:
+   fine at 8 cards today and at a plausible dozens-to-low-hundreds
+   ceiling for a regional essay vault. Essays now come from the
+   _essays collection (see vault.html), but that only changes how
+   these .essay-card nodes get generated, not this runtime cost — no
+   need to "fix" this unless the vault grows far past that scale. */
 (function initVault() {
   const grid = document.getElementById('vault-grid');
   if (!grid) return;
